@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+/* Minimal component CSS to satisfy Angular per-component style size budgets.
+   All page styling for the Home centric console lives in global src/styles.css
+   and is scoped under the `.hcc` class on the root element. */
+.hcc {
+  height: 100vh;
+  display: grid;
+}

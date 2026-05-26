@@ -1,0 +1,90 @@
+<div class="page">
+  <header class="topbar" role="banner">
+    <div class="topbar__left">
+      <span class="brand">HUMAX RMS</span>
+    </div>
+
+    <div class="topbar__right">
+      <button
+        class="icon-button"
+        type="button"
+        aria-label="Notifications"
+        title="Notifications"
+      >
+        <span class="icon-button__glyph" aria-hidden="true">🔔</span>
+        <span class="icon-button__dot" aria-hidden="true"></span>
+      </button>
+
+      <button
+        class="user-menu"
+        type="button"
+        aria-label="User menu"
+        title="User menu"
+      >
+        <span class="user-menu__name">{{ userName }}</span>
+        <span class="user-menu__caret" aria-hidden="true">▾</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main" role="main">
+    <section class="welcome" aria-label="Welcome">
+      <h1 class="welcome__title">Good morning, {{ userName }}</h1>
+      <p class="welcome__subtitle">Manage Cookies</p>
+    </section>
+
+    <section class="cards-grid" aria-label="Dashboard navigation">
+      <a
+        class="feature-card"
+        href="#"
+        aria-label="Open Home centric console"
+        (click)="onCardClick($event, 'Home centric console')"
+      >
+        <div class="feature-card__text">
+          <h2 class="feature-card__title">Home centric console</h2>
+          <p class="feature-card__desc">System Cookie</p>
+        </div>
+        <span class="feature-card__icon" aria-hidden="true">↗</span>
+      </a>
+
+      <a
+        class="feature-card"
+        href="#"
+        aria-label="Open Operation Console"
+        (click)="onCardClick($event, 'Operation Console')"
+      >
+        <div class="feature-card__text">
+          <h2 class="feature-card__title">Operation Console</h2>
+          <p class="feature-card__desc">System Operations &amp; Maintenance</p>
+        </div>
+        <span class="feature-card__icon" aria-hidden="true">↗</span>
+      </a>
+
+      <a
+        class="feature-card"
+        href="#"
+        aria-label="Open Insight Console"
+        (click)="onCardClick($event, 'Insight Console')"
+      >
+        <div class="feature-card__text">
+          <h2 class="feature-card__title">Insight Console</h2>
+          <p class="feature-card__desc">Performance &amp; Analytics</p>
+        </div>
+        <span class="feature-card__icon" aria-hidden="true">↗</span>
+      </a>
+
+      <a
+        class="feature-card"
+        href="#"
+        aria-label="Open Accesscontrol Console"
+        (click)="onCardClick($event, 'Accesscontrol Console')"
+      >
+        <div class="feature-card__text">
+          <h2 class="feature-card__title">Accesscontrol Console</h2>
+          <p class="feature-card__desc">System Accesscontrol</p>
+        </div>
+        <span class="feature-card__icon" aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+</div>

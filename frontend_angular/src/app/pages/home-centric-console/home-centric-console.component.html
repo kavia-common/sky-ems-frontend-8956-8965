@@ -1,0 +1,312 @@
+<div class="shell hcc" role="application" aria-label="Home centric console">
+  <header class="topbar" role="banner">
+    <div class="topbar__left">
+      <div class="brand" aria-label="Application name">Home centric console</div>
+
+      <nav class="topnav" aria-label="Primary">
+        <a href="#" (click)="onTopLinkClick($event, 'Overview')" class="topnav__link">Overview</a>
+        <a href="#" (click)="onTopLinkClick($event, 'Reports')" class="topnav__link">Reports</a>
+        <a href="#" (click)="onTopLinkClick($event, 'Settings')" class="topnav__link">Settings</a>
+      </nav>
+    </div>
+
+    <div class="topbar__right" aria-label="Header actions">
+      <button class="iconbtn" type="button" aria-label="Help" title="Help">
+        <span aria-hidden="true">❔</span>
+      </button>
+
+      <button class="iconbtn iconbtn--dot" type="button" aria-label="Notifications" title="Notifications">
+        <span aria-hidden="true">🔔</span>
+      </button>
+
+      <button class="userbtn" type="button" aria-label="User menu" title="User menu">
+        <span class="avatar" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
+        <span class="userbtn__name">{{ userName }}</span>
+        <span class="userbtn__caret" aria-hidden="true">▾</span>
+      </button>
+    </div>
+  </header>
+
+  <aside class="sidebar" role="navigation" aria-label="Sidebar">
+    <div class="sidebar__title">Navigation</div>
+
+    <ul class="sidebar__list" role="list">
+      <li *ngFor="let item of sidebarItems" role="listitem">
+        <button
+          type="button"
+          class="sidebar__item"
+          [class.sidebar__item--active]="item.active"
+          (click)="onNavClick(item)"
+          [attr.aria-current]="item.active ? 'page' : null"
+        >
+          <span class="sidebar__icon" aria-hidden="true">{{ item.icon }}</span>
+          <span class="sidebar__label">{{ item.label }}</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="content" role="main" aria-label="Dashboard">
+    <section class="grid" aria-label="Widgets">
+      <!-- 1) Line chart widget -->
+      <article class="card card--tall" aria-label="Performance over time">
+        <header class="card__header">
+          <h2 class="card__title">Performance over time</h2>
+          <div class="card__actions" aria-label="Card actions">
+            <span class="pill pill--success" aria-label="Up 2.8%">+2.8%</span>
+            <span class="pill pill--danger" aria-label="Down 0.9%">-0.9%</span>
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="legend" aria-label="Legend">
+          <span class="legend__item"><span class="swatch swatch--green" aria-hidden="true"></span> Green</span>
+          <span class="legend__item"><span class="swatch swatch--orange" aria-hidden="true"></span> Orange</span>
+          <span class="legend__item"><span class="swatch swatch--red" aria-hidden="true"></span> Red</span>
+        </div>
+
+        <div class="chart-placeholder" role="img" aria-label="Line chart placeholder">
+          <svg viewBox="0 0 420 180" preserveAspectRatio="none" aria-hidden="true">
+            <g opacity="0.55">
+              <line x1="0" y1="30" x2="420" y2="30" stroke="#e5e7eb" />
+              <line x1="0" y1="70" x2="420" y2="70" stroke="#e5e7eb" />
+              <line x1="0" y1="110" x2="420" y2="110" stroke="#e5e7eb" />
+              <line x1="0" y1="150" x2="420" y2="150" stroke="#e5e7eb" />
+            </g>
+            <polyline fill="none" stroke="#22c55e" stroke-width="2.5"
+              points="0,120 60,95 120,105 180,75 240,85 300,55 360,70 420,45" />
+            <polyline fill="none" stroke="#f97316" stroke-width="2.5"
+              points="0,140 60,130 120,120 180,125 240,110 300,115 360,105 420,100" />
+            <polyline fill="none" stroke="#ef4444" stroke-width="2.5"
+              points="0,80 60,92 120,88 180,105 240,98 300,115 360,130 420,120" />
+          </svg>
+        </div>
+
+        <footer class="card__footer">
+          <span class="muted">Last updated 2 min ago</span>
+          <span class="muted">UTC+0</span>
+        </footer>
+      </article>
+
+      <!-- 2) Mixed panel widget -->
+      <article class="card card--tall" aria-label="Regional distribution">
+        <header class="card__header">
+          <h2 class="card__title">Regional distribution</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="split">
+          <div class="panel" role="img" aria-label="Map or heat panel placeholder">
+            <div class="panel__chip">Live</div>
+            <div class="panel__dots" aria-hidden="true">
+              <span class="dot dot--a"></span>
+              <span class="dot dot--b"></span>
+              <span class="dot dot--c"></span>
+              <span class="dot dot--d"></span>
+            </div>
+          </div>
+
+          <div class="mini-table" role="table" aria-label="Summary table">
+            <div class="mini-table__row mini-table__row--head" role="row">
+              <div role="columnheader">Zone</div>
+              <div role="columnheader" class="right">Count</div>
+            </div>
+            <div class="mini-table__row" role="row">
+              <div role="cell">North</div><div role="cell" class="right">12</div>
+            </div>
+            <div class="mini-table__row" role="row">
+              <div role="cell">East</div><div role="cell" class="right">8</div>
+            </div>
+            <div class="mini-table__row" role="row">
+              <div role="cell">West</div><div role="cell" class="right">5</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3) KPI summary widget -->
+      <article class="card card--tall" aria-label="Key metrics">
+        <header class="card__header">
+          <h2 class="card__title">Key metrics</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="kpis" role="list" aria-label="KPI list">
+          <div *ngFor="let k of kpis" class="kpi" role="listitem">
+            <div class="kpi__meta">
+              <div class="kpi__label">{{ k.label }}</div>
+              <div class="kpi__delta" [class]="'kpi__delta--' + k.tone">{{ k.delta }}</div>
+            </div>
+            <div class="kpi__value">{{ k.value }}</div>
+            <div class="kpi__bar" aria-hidden="true">
+              <div class="kpi__barfill" [class]="'kpi__barfill--' + k.tone"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4) Bar chart widget (green) -->
+      <article class="card" aria-label="Category totals A">
+        <header class="card__header">
+          <h2 class="card__title">Category totals</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="bars" role="img" aria-label="Bar chart placeholder">
+          <span class="bar bar--g" style="height: 65%"></span>
+          <span class="bar bar--g" style="height: 30%"></span>
+          <span class="bar bar--g" style="height: 80%"></span>
+          <span class="bar bar--g" style="height: 55%"></span>
+          <span class="bar bar--g" style="height: 40%"></span>
+          <span class="bar bar--g" style="height: 72%"></span>
+        </div>
+
+        <footer class="card__footer">
+          <span class="muted">This week</span>
+          <span class="muted">+3.1%</span>
+        </footer>
+      </article>
+
+      <!-- 5) Bar chart widget (purple) -->
+      <article class="card" aria-label="Category totals B">
+        <header class="card__header">
+          <h2 class="card__title">Throughput</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="bars" role="img" aria-label="Bar chart placeholder">
+          <span class="bar bar--p" style="height: 42%"></span>
+          <span class="bar bar--p" style="height: 62%"></span>
+          <span class="bar bar--p" style="height: 34%"></span>
+          <span class="bar bar--p" style="height: 76%"></span>
+          <span class="bar bar--p" style="height: 58%"></span>
+          <span class="bar bar--p" style="height: 66%"></span>
+        </div>
+
+        <footer class="card__footer">
+          <span class="muted">Avg.</span>
+          <span class="muted">128/min</span>
+        </footer>
+      </article>
+
+      <!-- 6) Action list widget -->
+      <article class="card" aria-label="Quick actions">
+        <header class="card__header">
+          <h2 class="card__title">Quick actions</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="actions">
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Refresh data')">Refresh data</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Export report')">Export report</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Sync devices')">Sync devices</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Run diagnostics')">Run diagnostics</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Open settings')">Open settings</a>
+        </div>
+      </article>
+
+      <!-- 7) Status table widget -->
+      <article class="card card--tall" aria-label="System status">
+        <header class="card__header">
+          <h2 class="card__title">System status</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="statuslist" role="table" aria-label="Status list">
+          <div class="statusrow statusrow--head" role="row">
+            <div role="columnheader">Name</div>
+            <div role="columnheader">Status</div>
+            <div role="columnheader" class="right">Value</div>
+          </div>
+
+          <div *ngFor="let r of statusTable" class="statusrow" role="row">
+            <div role="cell">{{ r.name }}</div>
+            <div role="cell" class="statuscell">
+              <span class="statusdot" [class]="'statusdot--' + r.status" aria-hidden="true"></span>
+              <span class="muted">{{ r.status }}</span>
+            </div>
+            <div role="cell" class="right">{{ r.value }}</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8) Recent events table widget -->
+      <article class="card card--tall" aria-label="Recent events">
+        <header class="card__header">
+          <h2 class="card__title">Recent events</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="table" role="table" aria-label="Recent events table">
+          <div class="table__row table__row--head" role="row">
+            <div role="columnheader">Time</div>
+            <div role="columnheader">Device</div>
+            <div role="columnheader">Event</div>
+            <div role="columnheader" class="right">Result</div>
+          </div>
+
+          <div *ngFor="let e of recentTable" class="table__row" role="row">
+            <div role="cell" class="mono">{{ e.time }}</div>
+            <div role="cell">{{ e.device }}</div>
+            <div role="cell">{{ e.event }}</div>
+            <div role="cell" class="right">
+              <span class="pill" [class.pill--success]="e.result === 'Success'"
+                [class.pill--warning]="e.result === 'Queued'"
+                [class.pill--danger]="e.result === 'Warning'">{{ e.result }}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9) Sparkline list widget -->
+      <article class="card card--tall" aria-label="Trend snapshots">
+        <header class="card__header">
+          <h2 class="card__title">Trend snapshots</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="sparks" role="list" aria-label="Sparkline list">
+          <div class="spark" role="listitem" aria-label="Snapshot A">
+            <div class="spark__meta">
+              <div class="spark__label">Latency</div>
+              <div class="spark__value">42ms</div>
+            </div>
+            <div class="spark__line spark__line--yellow" aria-hidden="true"></div>
+          </div>
+
+          <div class="spark" role="listitem" aria-label="Snapshot B">
+            <div class="spark__meta">
+              <div class="spark__label">Requests</div>
+              <div class="spark__value">1.2k</div>
+            </div>
+            <div class="spark__line spark__line--green" aria-hidden="true"></div>
+          </div>
+
+          <div class="spark" role="listitem" aria-label="Snapshot C">
+            <div class="spark__meta">
+              <div class="spark__label">Errors</div>
+              <div class="spark__value">0.7%</div>
+            </div>
+            <div class="spark__line spark__line--red" aria-hidden="true"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>

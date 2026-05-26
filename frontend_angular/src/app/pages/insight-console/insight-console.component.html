@@ -69,25 +69,28 @@
 
   <!-- MAIN -->
   <div class="ic__main">
-    <!-- TOPBAR (lavender band, right-aligned welcome + avatar only) -->
+    <!-- TOPBAR (clean white, page title left + welcome/avatar right) -->
     <header class="ic__topbar" role="banner" aria-label="Header">
-      <div class="ic__topbarSpacer"></div>
+      <div class="ic__topbarLeft">
+        <h1 class="ic__pageTitle">Insight Console</h1>
+      </div>
       <div class="ic__topbarRight" aria-label="Header actions">
-        <span class="ic__welcome">Welcome, {{ userName }}!</span>
-        <span class="ic__avatarCircle" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
+        <button class="ic__topIcoBtn" type="button" aria-label="Notifications" title="Notifications">
+          <span aria-hidden="true">🔔</span>
+          <span class="ic__topIcoDot" aria-hidden="true"></span>
+        </button>
+        <button class="ic__topIcoBtn" type="button" aria-label="Settings" title="Settings">
+          <span aria-hidden="true">⚙</span>
+        </button>
+        <div class="ic__topUser">
+          <span class="ic__welcome">Welcome, {{ userName }}</span>
+          <span class="ic__avatarCircle" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
+        </div>
       </div>
     </header>
 
     <!-- CONTENT -->
     <main class="ic__content" role="main" aria-label="Insight console content">
-
-      <!-- Page heading row -->
-      <div class="ic__pageHead">
-        <h1 class="ic__pageTitle">Insight Console</h1>
-        <div class="ic__pageHeadRight">
-          <span class="ic__welcomeSub">Welcome, {{ userName }}!</span>
-        </div>
-      </div>
 
       <div class="ic__grid">
 
@@ -96,11 +99,13 @@
           <article class="ic__card ic__card--chat" aria-label="Ask me your queries">
             <header class="ic__cardHead">
               <h2 class="ic__cardTitle">Ask me your queries!</h2>
+              <span class="ic__chip ic__chip--blue">Live</span>
             </header>
 
             <!-- KPI Highlight -->
             <div class="ic__kpiHighlight" aria-label="Primary KPI">
-              <span class="ic__kpiMain">-65 dbm</span>
+              <span class="ic__kpiMain">-65 dBm</span>
+              <span class="ic__kpiSub">Avg signal across all sites</span>
             </div>
 
             <!-- Area Chart -->
@@ -129,8 +134,8 @@
 
                 <defs>
                   <linearGradient id="icAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#34c39a" stop-opacity="0.55" />
-                    <stop offset="100%" stop-color="#34c39a" stop-opacity="0.05" />
+                    <stop offset="0%" stop-color="#2563eb" stop-opacity="0.45" />
+                    <stop offset="100%" stop-color="#2563eb" stop-opacity="0.04" />
                   </linearGradient>
                 </defs>
 
@@ -141,16 +146,16 @@
 
                 <path
                   fill="none"
-                  stroke="#22a877"
+                  stroke="#2563eb"
                   stroke-width="2.4"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   d="M36,168 C66,160 86,150 116,152 C146,154 176,160 206,138 C236,116 266,150 296,140 C326,130 356,120 386,128 C416,136 446,100 476,102 C506,104 536,86 566,80 C596,74 626,96 656,78 C686,60 696,70 710,68"
                 />
 
-                <circle cx="206" cy="138" r="3.4" fill="#22a877" stroke="#fff" stroke-width="1.2" />
-                <circle cx="386" cy="128" r="3.4" fill="#22a877" stroke="#fff" stroke-width="1.2" />
-                <circle cx="566" cy="80" r="3.4" fill="#22a877" stroke="#fff" stroke-width="1.2" />
+                <circle cx="206" cy="138" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.4" />
+                <circle cx="386" cy="128" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.4" />
+                <circle cx="566" cy="80" r="3.6" fill="#f59e0b" stroke="#fff" stroke-width="1.4" />
 
                 <g font-size="10" fill="#9aa3b2" text-anchor="middle">
                   <text x="56" y="212">Jan</text>
@@ -176,6 +181,7 @@
             </p>
 
             <div class="ic__queryRow">
+              <span class="ic__queryIco" aria-hidden="true">⌕</span>
               <input
                 class="ic__queryInput"
                 type="text"
@@ -195,7 +201,7 @@
           </article>
         </section>
 
-        <!-- RIGHT REGION: KPI card -->
+        <!-- RIGHT REGION: KPI card + tiles -->
         <section class="ic__col ic__col--right">
 
           <article class="ic__card ic__card--kpi" aria-label="Daily usage gauge">
@@ -205,6 +211,7 @@
               </div>
               <div class="ic__kpiHeadVal">
                 <div class="ic__kpiBig">388K<span class="ic__kpiBigSub">/500k</span></div>
+                <div class="ic__kpiBigCaption">Today</div>
               </div>
             </header>
 
@@ -239,7 +246,7 @@
                       width="7"
                       [attr.height]="h"
                       rx="1.5"
-                      fill="#3ecf8e"
+                      fill="#2563eb"
                     />
                   }
                 </svg>
@@ -260,7 +267,7 @@
                     cy="36"
                     r="26"
                     fill="none"
-                    stroke="#8b5cf6"
+                    stroke="#2563eb"
                     stroke-width="10"
                     stroke-dasharray="120 163"
                     stroke-dashoffset="40"
@@ -281,8 +288,8 @@
                 <svg viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true">
                   <defs>
                     <linearGradient id="icSpark1" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.45" />
-                      <stop offset="100%" stop-color="#f472b6" stop-opacity="0.03" />
+                      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.45" />
+                      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.03" />
                     </linearGradient>
                   </defs>
                   <polygon
@@ -291,7 +298,7 @@
                   />
                   <polyline
                     fill="none"
-                    stroke="#ec4899"
+                    stroke="#f59e0b"
                     stroke-width="2"
                     points="4,40 20,30 36,34 52,22 68,28 84,18 100,24 116,14"
                   />
@@ -327,7 +334,7 @@
                     cy="36"
                     r="26"
                     fill="none"
-                    stroke="#1fb6c9"
+                    stroke="#22c55e"
                     stroke-width="10"
                     stroke-dasharray="140 163"
                     stroke-dashoffset="40"
@@ -348,8 +355,8 @@
                 <svg viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true">
                   <defs>
                     <linearGradient id="icSpark2" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.45" />
-                      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.03" />
+                      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.40" />
+                      <stop offset="100%" stop-color="#2563eb" stop-opacity="0.03" />
                     </linearGradient>
                   </defs>
                   <polygon
@@ -358,7 +365,7 @@
                   />
                   <polyline
                     fill="none"
-                    stroke="#3b82f6"
+                    stroke="#2563eb"
                     stroke-width="2"
                     points="4,20 20,28 36,22 52,32 68,26 84,36 100,28 116,40"
                   />

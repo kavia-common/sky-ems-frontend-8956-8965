@@ -1,65 +1,58 @@
 <div class="hcc" role="application" aria-label="Home centric console">
-  <!-- Left vertical sidebar with icons (Dashboard, Reports, Search) -->
+  <!-- LEFT SIDEBAR (wide, text-based like screenshot) -->
   <aside class="hcc__sidebar" role="navigation" aria-label="Primary">
     <div class="hcc__sidebrand" aria-label="Home Centric Console">
-      <div class="hcc__sidebrand-mark" aria-hidden="true">H</div>
+      <div class="hcc__sidebrandTitle">Home Centric Console</div>
     </div>
 
     <ul class="hcc__nav" role="list" aria-label="Sidebar navigation">
       <li role="listitem">
         <button
           type="button"
-          class="hcc__navbtn"
-          [class.hcc__navbtn--active]="activeNav === 'Dashboard'"
+          class="hcc__navitem"
+          [class.hcc__navitem--active]="activeNav === 'Dashboard'"
           (click)="setActiveNav('Dashboard')"
           [attr.aria-current]="activeNav === 'Dashboard' ? 'page' : null"
-          aria-label="Dashboard"
-          title="Dashboard"
         >
-          <span class="hcc__navico" aria-hidden="true">▦</span>
-          <span class="hcc__navlabel">Dashboard</span>
+          <span class="hcc__navitemIco" aria-hidden="true">▦</span>
+          <span class="hcc__navitemLabel">Dashboard</span>
         </button>
       </li>
 
       <li role="listitem">
         <button
           type="button"
-          class="hcc__navbtn"
-          [class.hcc__navbtn--active]="activeNav === 'Reports'"
+          class="hcc__navitem"
+          [class.hcc__navitem--active]="activeNav === 'Reports'"
           (click)="setActiveNav('Reports')"
           [attr.aria-current]="activeNav === 'Reports' ? 'page' : null"
-          aria-label="Reports"
-          title="Reports"
         >
-          <span class="hcc__navico" aria-hidden="true">▤</span>
-          <span class="hcc__navlabel">Reports</span>
+          <span class="hcc__navitemIco" aria-hidden="true">▤</span>
+          <span class="hcc__navitemLabel">Reports</span>
         </button>
       </li>
 
       <li role="listitem">
         <button
           type="button"
-          class="hcc__navbtn"
-          [class.hcc__navbtn--active]="activeNav === 'Search'"
+          class="hcc__navitem"
+          [class.hcc__navitem--active]="activeNav === 'Search'"
           (click)="setActiveNav('Search')"
           [attr.aria-current]="activeNav === 'Search' ? 'page' : null"
-          aria-label="Search"
-          title="Search"
         >
-          <span class="hcc__navico" aria-hidden="true">⌕</span>
-          <span class="hcc__navlabel">Search</span>
+          <span class="hcc__navitemIco" aria-hidden="true">⌕</span>
+          <span class="hcc__navitemLabel">Search</span>
         </button>
       </li>
     </ul>
   </aside>
 
-  <!-- Main area -->
+  <!-- MAIN -->
   <div class="hcc__main">
-    <!-- Top header bar showing “Welcome John Doe”. -->
+    <!-- TOPBAR (title left, search center, icons right) -->
     <header class="hcc__topbar" role="banner" aria-label="Header">
-      <div class="hcc__welcome">
-        <div class="hcc__welcomeTitle">Welcome {{ userName }}</div>
-        <div class="hcc__welcomeSub">Home Centric Console</div>
+      <div class="hcc__topbarLeft">
+        <div class="hcc__pageTitle">Home Centric Console</div>
       </div>
 
       <label class="hcc__search" aria-label="Search">
@@ -67,314 +60,300 @@
         <input
           class="hcc__searchInput"
           type="search"
-          placeholder="Search"
+          placeholder="search"
           aria-label="Search input"
         />
       </label>
 
-      <div class="hcc__topActions" aria-label="Header actions">
-        <button class="hcc__iconbtn" type="button" aria-label="Notifications" title="Notifications">
+      <div class="hcc__topbarRight" aria-label="Header actions">
+        <button class="hcc__topIcoBtn" type="button" aria-label="Notifications" title="Notifications">
           🔔
         </button>
-        <button class="hcc__iconbtn" type="button" aria-label="Messages" title="Messages">
-          💬
+        <button class="hcc__topIcoBtn" type="button" aria-label="Settings" title="Settings">
+          ⚙
         </button>
-        <button class="hcc__userbtn" type="button" aria-label="User menu" title="User menu">
-          <span class="hcc__avatar" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
-          <span class="hcc__username">{{ userName }}</span>
-          <span class="hcc__caret" aria-hidden="true">▾</span>
+        <button class="hcc__avatarBtn" type="button" aria-label="User menu" title="User menu">
+          <span class="hcc__avatarCircle" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
         </button>
       </div>
     </header>
 
     <main class="hcc__content" role="main" aria-label="Dashboard content">
       <section class="hcc__grid" aria-label="Home Centric Console dashboard">
-        <!-- LEFT COLUMN: Hardware metrics, line graphs, bandwidth charts, recent activity -->
-        <article class="hcc__card hcc__card--hardware" aria-label="Hardware metrics">
-          <header class="hcc__cardHead">
-            <h2 class="hcc__cardTitle">Hardware metrics</h2>
-            <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
-          </header>
-
-          <div class="hcc__metrics" role="list" aria-label="Hardware metric tiles">
-            <div class="hcc__metric" role="listitem" aria-label="Temperature">
-              <div class="hcc__metricLabel">Temperature</div>
-              <div class="hcc__metricValue">65°C</div>
-              <div class="hcc__metricMeta hcc__tone--warn">High</div>
-            </div>
-
-            <div class="hcc__metric" role="listitem" aria-label="CPU usage">
-              <div class="hcc__metricLabel">CPU usage</div>
-              <div class="hcc__metricValue">45%</div>
-              <div class="hcc__metricMeta hcc__tone--ok">Normal</div>
-            </div>
-
-            <div class="hcc__metric" role="listitem" aria-label="Memory usage">
-              <div class="hcc__metricLabel">Memory usage</div>
-              <div class="hcc__metricValue">45%</div>
-              <div class="hcc__metricMeta hcc__tone--ok">Normal</div>
-            </div>
-          </div>
-
-          <div class="hcc__chartBlock" aria-label="Usage trends">
-            <div class="hcc__chartTitle">Usage trends</div>
-            <div class="hcc__lineChart" role="img" aria-label="Usage trends line chart placeholder">
-              <svg viewBox="0 0 520 160" preserveAspectRatio="none" aria-hidden="true">
-                <g opacity="0.55">
-                  <line x1="0" y1="20" x2="520" y2="20" stroke="#e5e7eb" />
-                  <line x1="0" y1="60" x2="520" y2="60" stroke="#e5e7eb" />
-                  <line x1="0" y1="100" x2="520" y2="100" stroke="#e5e7eb" />
-                  <line x1="0" y1="140" x2="520" y2="140" stroke="#e5e7eb" />
-                </g>
-                <polyline
-                  fill="none"
-                  stroke="var(--hcc-green)"
-                  stroke-width="2.5"
-                  points="0,98 70,88 140,92 210,70 280,78 350,56 420,62 520,44"
-                />
-                <polyline
-                  fill="none"
-                  stroke="var(--hcc-yellow)"
-                  stroke-width="2.5"
-                  points="0,130 70,120 140,116 210,118 280,106 350,112 420,104 520,92"
-                />
-                <polyline
-                  fill="none"
-                  stroke="var(--hcc-red)"
-                  stroke-width="2.5"
-                  points="0,76 70,86 140,80 210,94 280,88 350,104 420,120 520,110"
-                />
-              </svg>
-            </div>
-          </div>
-
-          <div class="hcc__split2" aria-label="Bandwidth utilization">
-            <div class="hcc__miniCard" aria-label="2.4 GHz bandwidth utilization">
-              <div class="hcc__miniHead">
-                <div class="hcc__miniTitle">2.4 GHz</div>
-                <div class="hcc__pill hcc__pill--blue">Utilization</div>
+        <!-- LEFT COLUMN -->
+        <div class="hcc__col hcc__col--left" aria-label="Left column widgets">
+          <!-- WFM big line chart -->
+          <article class="hcc__card hcc__card--wfm" aria-label="WFM chart">
+            <header class="hcc__cardHead">
+              <h2 class="hcc__cardTitle">WFM</h2>
+              <div class="hcc__cardActions">
+                <span class="hcc__chip hcc__chip--outline">This week</span>
+                <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
               </div>
-              <div class="hcc__barChart hcc__barChart--green" role="img" aria-label="2.4 GHz bar chart placeholder">
-                <span class="hcc__bar" style="height: 52%"></span>
-                <span class="hcc__bar" style="height: 68%"></span>
-                <span class="hcc__bar" style="height: 40%"></span>
-                <span class="hcc__bar" style="height: 76%"></span>
-                <span class="hcc__bar" style="height: 56%"></span>
-                <span class="hcc__bar" style="height: 34%"></span>
-                <span class="hcc__bar" style="height: 64%"></span>
+            </header>
+
+            <div class="hcc__kpis" role="list" aria-label="KPI strip">
+              <div class="hcc__kpi" role="listitem">
+                <div class="hcc__kpiLabel">Coverage</div>
+                <div class="hcc__kpiValue">98%</div>
+              </div>
+              <div class="hcc__kpi" role="listitem">
+                <div class="hcc__kpiLabel">Capacity</div>
+                <div class="hcc__kpiValue">45%</div>
+              </div>
+              <div class="hcc__kpi" role="listitem">
+                <div class="hcc__kpiLabel">Quality</div>
+                <div class="hcc__kpiValue">45%</div>
+              </div>
+              <div class="hcc__kpi" role="listitem">
+                <div class="hcc__kpiLabel">Risk</div>
+                <div class="hcc__kpiValue">65%</div>
               </div>
             </div>
 
-            <div class="hcc__miniCard" aria-label="5 GHz bandwidth utilization">
-              <div class="hcc__miniHead">
-                <div class="hcc__miniTitle">5 GHz</div>
-                <div class="hcc__pill hcc__pill--purple">Utilization</div>
+            <div class="hcc__wfmBody" aria-label="WFM plot">
+              <div class="hcc__wfmPlot" role="img" aria-label="Multi-series line chart">
+                <svg viewBox="0 0 640 210" preserveAspectRatio="none" aria-hidden="true">
+                  <g opacity="0.7">
+                    <line x1="0" y1="32" x2="640" y2="32" stroke="#e9edf3" />
+                    <line x1="0" y1="74" x2="640" y2="74" stroke="#e9edf3" />
+                    <line x1="0" y1="116" x2="640" y2="116" stroke="#e9edf3" />
+                    <line x1="0" y1="158" x2="640" y2="158" stroke="#e9edf3" />
+                    <line x1="0" y1="200" x2="640" y2="200" stroke="#e9edf3" />
+                  </g>
+
+                  <polyline
+                    fill="none"
+                    stroke="var(--hcc-teal)"
+                    stroke-width="2.2"
+                    points="0,88 80,84 160,92 240,86 320,96 400,98 480,110 560,112 640,120"
+                  />
+                  <polyline
+                    fill="none"
+                    stroke="var(--hcc-orange)"
+                    stroke-width="2.2"
+                    points="0,118 80,122 160,130 240,126 320,136 400,138 480,146 560,150 640,156"
+                  />
+                  <polyline
+                    fill="none"
+                    stroke="var(--hcc-pink)"
+                    stroke-width="2.2"
+                    points="0,64 80,70 160,76 240,82 320,88 400,96 480,104 560,116 640,132"
+                  />
+                </svg>
               </div>
-              <div class="hcc__barChart hcc__barChart--purple" role="img" aria-label="5 GHz bar chart placeholder">
-                <span class="hcc__bar" style="height: 46%"></span>
-                <span class="hcc__bar" style="height: 60%"></span>
+
+              <div class="hcc__wfmMini" role="img" aria-label="Mini bar strip">
+                <span class="hcc__miniBar" style="height: 32%"></span>
+                <span class="hcc__miniBar" style="height: 64%"></span>
+                <span class="hcc__miniBar" style="height: 44%"></span>
+                <span class="hcc__miniBar" style="height: 72%"></span>
+                <span class="hcc__miniBar" style="height: 56%"></span>
+                <span class="hcc__miniBar" style="height: 40%"></span>
+                <span class="hcc__miniBar" style="height: 68%"></span>
+                <span class="hcc__miniBar" style="height: 48%"></span>
+                <span class="hcc__miniBar" style="height: 62%"></span>
+                <span class="hcc__miniBar" style="height: 38%"></span>
+                <span class="hcc__miniBar" style="height: 60%"></span>
+                <span class="hcc__miniBar" style="height: 44%"></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- two small bar chart cards -->
+          <div class="hcc__leftBottom" aria-label="Bottom left charts">
+            <article class="hcc__card hcc__card--bars" aria-label="Green bar chart">
+              <header class="hcc__cardHead">
+                <h2 class="hcc__cardTitle">Utilization</h2>
+                <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
+              </header>
+
+              <div class="hcc__bars hcc__bars--green" role="img" aria-label="Green bar chart">
                 <span class="hcc__bar" style="height: 38%"></span>
-                <span class="hcc__bar" style="height: 72%"></span>
-                <span class="hcc__bar" style="height: 58%"></span>
+                <span class="hcc__bar" style="height: 60%"></span>
                 <span class="hcc__bar" style="height: 44%"></span>
+                <span class="hcc__bar" style="height: 78%"></span>
+                <span class="hcc__bar" style="height: 52%"></span>
+                <span class="hcc__bar" style="height: 34%"></span>
                 <span class="hcc__bar" style="height: 66%"></span>
+                <span class="hcc__bar" style="height: 46%"></span>
               </div>
-            </div>
+
+              <ul class="hcc__legend" role="list" aria-label="Utilization legend">
+                <li class="hcc__legendItem" role="listitem"><span class="hcc__dot hcc__dot--green"></span>Active</li>
+                <li class="hcc__legendItem" role="listitem"><span class="hcc__dot hcc__dot--muted"></span>Idle</li>
+              </ul>
+            </article>
+
+            <article class="hcc__card hcc__card--bars" aria-label="Purple bar chart">
+              <header class="hcc__cardHead">
+                <h2 class="hcc__cardTitle">Bandwidth</h2>
+                <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
+              </header>
+
+              <div class="hcc__bars hcc__bars--purple" role="img" aria-label="Purple bar chart">
+                <span class="hcc__bar" style="height: 34%"></span>
+                <span class="hcc__bar" style="height: 52%"></span>
+                <span class="hcc__bar" style="height: 40%"></span>
+                <span class="hcc__bar" style="height: 72%"></span>
+                <span class="hcc__bar" style="height: 56%"></span>
+                <span class="hcc__bar" style="height: 44%"></span>
+                <span class="hcc__bar" style="height: 64%"></span>
+                <span class="hcc__bar" style="height: 48%"></span>
+              </div>
+
+              <ul class="hcc__legend" role="list" aria-label="Bandwidth legend">
+                <li class="hcc__legendItem" role="listitem"><span class="hcc__dot hcc__dot--purple"></span>Tx</li>
+                <li class="hcc__legendItem" role="listitem"><span class="hcc__dot hcc__dot--muted"></span>Rx</li>
+              </ul>
+            </article>
           </div>
+        </div>
 
-          <div class="hcc__activity" aria-label="Recent activity">
-            <div class="hcc__activityHead">
-              <div class="hcc__chartTitle">Recent activity</div>
-            </div>
+        <!-- MIDDLE COLUMN -->
+        <div class="hcc__col hcc__col--mid" aria-label="Middle column widgets">
+          <article class="hcc__card hcc__card--summary" aria-label="Summary card">
+            <header class="hcc__cardHead">
+              <h2 class="hcc__cardTitle">Summary</h2>
+              <div class="hcc__cardActions">
+                <span class="hcc__chip hcc__chip--ok">Active</span>
+                <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
+              </div>
+            </header>
 
-            <div class="hcc__log" role="list" aria-label="Recent activity logs">
-              <div *ngFor="let item of recentActivity" class="hcc__logRow" role="listitem">
-                <span class="hcc__logTime">{{ item.time }}</span>
-                <span class="hcc__logMsg">{{ item.message }}</span>
+            <div class="hcc__summaryTop" aria-label="Summary metrics">
+              <div class="hcc__summaryMetric">
+                <div class="hcc__miniLabel">Items</div>
+                <div class="hcc__miniValue">1,245</div>
+              </div>
+              <div class="hcc__summaryMetric">
+                <div class="hcc__miniLabel">Errors</div>
+                <div class="hcc__miniValue">14</div>
+              </div>
+              <div class="hcc__summaryMetric">
+                <div class="hcc__miniLabel">Rate</div>
+                <div class="hcc__miniValue">78%</div>
               </div>
             </div>
-          </div>
-        </article>
 
-        <!-- CENTER COLUMN: Device info, location map, network map, WiFi details, ethernet status -->
-        <div class="hcc__stack hcc__stack--center" aria-label="Device and network panels">
-          <article class="hcc__card" aria-label="Device information">
+            <div class="hcc__tealBlock" role="img" aria-label="Teal density block"></div>
+
+            <div class="hcc__summaryBottom" aria-label="Bottom mini widgets">
+              <div class="hcc__funnel" role="img" aria-label="Funnel chart placeholder"></div>
+              <div class="hcc__spark" role="img" aria-label="Sparkline placeholder">
+                <svg viewBox="0 0 120 28" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline
+                    fill="none"
+                    stroke="var(--hcc-teal)"
+                    stroke-width="2"
+                    points="0,16 18,18 36,12 54,14 72,9 90,12 108,8 120,10"
+                  />
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <article class="hcc__card hcc__card--table" aria-label="Metrics table card">
             <header class="hcc__cardHead">
-              <h2 class="hcc__cardTitle">Device information</h2>
+              <h2 class="hcc__cardTitle">Metrics</h2>
               <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
             </header>
 
-            <dl class="hcc__dl" aria-label="Device information details">
-              <div class="hcc__dlRow">
-                <dt>Device ID</dt><dd>{{ deviceInfo.deviceId }}</dd>
+            <dl class="hcc__kvGrid" aria-label="Key metrics list">
+              <div class="hcc__kv">
+                <dt>Device ID</dt>
+                <dd>{{ deviceInfo.deviceId }}</dd>
               </div>
-              <div class="hcc__dlRow">
-                <dt>Firmware</dt><dd>{{ deviceInfo.firmware }}</dd>
+              <div class="hcc__kv">
+                <dt>Firmware</dt>
+                <dd>{{ deviceInfo.firmware }}</dd>
               </div>
-              <div class="hcc__dlRow">
-                <dt>Hardware Version</dt><dd>{{ deviceInfo.hardwareVersion }}</dd>
+              <div class="hcc__kv">
+                <dt>MAC</dt>
+                <dd>{{ deviceInfo.mac }}</dd>
               </div>
-              <div class="hcc__dlRow">
-                <dt>Serial Number</dt><dd>{{ deviceInfo.serialNumber }}</dd>
-              </div>
-              <div class="hcc__dlRow">
-                <dt>MAC address</dt><dd>{{ deviceInfo.mac }}</dd>
+              <div class="hcc__kv">
+                <dt>Status</dt>
+                <dd><span class="hcc__chip hcc__chip--ok">OK</span></dd>
               </div>
             </dl>
-          </article>
 
-          <article class="hcc__card" aria-label="Location">
-            <header class="hcc__cardHead">
-              <h2 class="hcc__cardTitle">Location</h2>
-              <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
-            </header>
-
-            <div class="hcc__map" role="img" aria-label="Map visualization placeholder">
-              <div class="hcc__mapPin" aria-hidden="true"></div>
-              <div class="hcc__mapGrid" aria-hidden="true"></div>
-            </div>
-          </article>
-
-          <article class="hcc__card" aria-label="Network map">
-            <header class="hcc__cardHead">
-              <h2 class="hcc__cardTitle">Network map</h2>
-              <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
-            </header>
-
-            <div class="hcc__netmap" role="img" aria-label="Connected devices network map placeholder">
-              <div class="hcc__node hcc__node--router" aria-label="Router">
-                <div class="hcc__nodeIco" aria-hidden="true">⌂</div>
-                <div class="hcc__nodeLabel">Router</div>
+            <div class="hcc__miniRows" role="list" aria-label="Compact table rows">
+              <div class="hcc__miniRow" role="listitem">
+                <span class="hcc__miniRowLabel">Latency</span>
+                <span class="hcc__miniRowValue">{{ networkStats.latencyMs }} ms</span>
               </div>
-
-              <div class="hcc__netline hcc__netline--a" aria-hidden="true"></div>
-              <div class="hcc__netline hcc__netline--b" aria-hidden="true"></div>
-
-              <div class="hcc__node hcc__node--laptop" aria-label="Laptop">
-                <div class="hcc__nodeIco" aria-hidden="true">▭</div>
-                <div class="hcc__nodeLabel">Laptop</div>
+              <div class="hcc__miniRow" role="listitem">
+                <span class="hcc__miniRowLabel">Signal</span>
+                <span class="hcc__miniRowValue">{{ networkStats.signalDbm }} dBm</span>
               </div>
-
-              <div class="hcc__node hcc__node--tv" aria-label="TV">
-                <div class="hcc__nodeIco" aria-hidden="true">▣</div>
-                <div class="hcc__nodeLabel">TV</div>
+              <div class="hcc__miniRow" role="listitem">
+                <span class="hcc__miniRowLabel">Channel</span>
+                <span class="hcc__miniRowValue">{{ wifiDetails.channel }}</span>
               </div>
             </div>
-          </article>
-
-          <article class="hcc__card" aria-label="WiFi details">
-            <header class="hcc__cardHead">
-              <h2 class="hcc__cardTitle">WiFi details</h2>
-              <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
-            </header>
-
-            <dl class="hcc__dl hcc__dl--2col" aria-label="WiFi details list">
-              <div class="hcc__dlRow">
-                <dt>Network name</dt><dd>{{ wifiDetails.networkName }}</dd>
-              </div>
-              <div class="hcc__dlRow">
-                <dt>Channel</dt><dd>{{ wifiDetails.channel }}</dd>
-              </div>
-              <div class="hcc__dlRow">
-                <dt>Signal strength</dt><dd>{{ wifiDetails.signal }}</dd>
-              </div>
-              <div class="hcc__dlRow">
-                <dt>Security</dt><dd>{{ wifiDetails.security }}</dd>
-              </div>
-            </dl>
-          </article>
-
-          <article class="hcc__card" aria-label="Ethernet status">
-            <header class="hcc__cardHead">
-              <h2 class="hcc__cardTitle">Ethernet status</h2>
-              <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
-            </header>
-
-            <dl class="hcc__dl" aria-label="Ethernet status details">
-              <div class="hcc__dlRow">
-                <dt>IP address</dt><dd>{{ ethernetStatus.ip }}</dd>
-              </div>
-              <div class="hcc__dlRow">
-                <dt>Subnet mask</dt><dd>{{ ethernetStatus.subnetMask }}</dd>
-              </div>
-              <div class="hcc__dlRow">
-                <dt>Connection</dt>
-                <dd>
-                  <span class="hcc__pill" [class.hcc__pill--ok]="ethernetStatus.connected" [class.hcc__pill--danger]="!ethernetStatus.connected">
-                    {{ ethernetStatus.connected ? 'Connected' : 'Disconnected' }}
-                  </span>
-                </dd>
-              </div>
-            </dl>
           </article>
         </div>
 
-        <!-- RIGHT SIDEBAR: Notifications, speed test, network statistics, small area charts -->
-        <aside class="hcc__right" aria-label="Right sidebar panels">
-          <article class="hcc__card" aria-label="Notifications">
+        <!-- RIGHT COLUMN -->
+        <aside class="hcc__col hcc__col--right" aria-label="Right column widgets">
+          <article class="hcc__card hcc__card--list" aria-label="Notifications list">
             <header class="hcc__cardHead">
               <h2 class="hcc__cardTitle">Notifications</h2>
               <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
             </header>
 
-            <div class="hcc__notifs" role="list" aria-label="Notification counts">
-              <div class="hcc__notif" role="listitem">
-                <span class="hcc__notifLabel">Alerts</span>
-                <span class="hcc__pill hcc__pill--danger">{{ notifications.alerts }}</span>
+            <div class="hcc__list" role="list" aria-label="Notification rows">
+              <div class="hcc__listRow" role="listitem">
+                <span class="hcc__listLabel">Alerts</span>
+                <span class="hcc__badge hcc__badge--red">{{ notifications.alerts }}</span>
               </div>
-              <div class="hcc__notif" role="listitem">
-                <span class="hcc__notifLabel">Warnings</span>
-                <span class="hcc__pill hcc__pill--warn">{{ notifications.warnings }}</span>
+              <div class="hcc__listRow" role="listitem">
+                <span class="hcc__listLabel">Warnings</span>
+                <span class="hcc__badge hcc__badge--amber">{{ notifications.warnings }}</span>
               </div>
-              <div class="hcc__notif" role="listitem">
-                <span class="hcc__notifLabel">Messages</span>
-                <span class="hcc__pill hcc__pill--blue">{{ notifications.messages }}</span>
+              <div class="hcc__listRow" role="listitem">
+                <span class="hcc__listLabel">Messages</span>
+                <span class="hcc__badge hcc__badge--gray">{{ notifications.messages }}</span>
               </div>
             </div>
           </article>
 
-          <article class="hcc__card" aria-label="Speed and broadband test">
+          <article class="hcc__card hcc__card--actions" aria-label="Quick actions">
             <header class="hcc__cardHead">
-              <h2 class="hcc__cardTitle">Speed &amp; broadband test</h2>
+              <h2 class="hcc__cardTitle">Quick actions</h2>
               <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
             </header>
 
-            <div class="hcc__speed">
-              <div class="hcc__speedRow" aria-label="Download speed">
-                <div class="hcc__speedLabel">Download</div>
-                <div class="hcc__speedValue">{{ speedTest.downloadMbps }} <span class="hcc__unit">Mbps</span></div>
-              </div>
-              <div class="hcc__speedRow" aria-label="Upload speed">
-                <div class="hcc__speedLabel">Upload</div>
-                <div class="hcc__speedValue">{{ speedTest.uploadMbps }} <span class="hcc__unit">Mbps</span></div>
-              </div>
-
-              <button class="hcc__primaryBtn" type="button" (click)="runSpeedTest()" aria-label="Run Test">
-                Run Test
-              </button>
+            <div class="hcc__actionGrid" role="list" aria-label="Quick action buttons">
+              <button class="hcc__actionBtn" type="button">Reset</button>
+              <button class="hcc__actionBtn" type="button">Reboot</button>
+              <button class="hcc__actionBtn" type="button">Update</button>
+              <button class="hcc__actionBtn" type="button">Logs</button>
+              <button class="hcc__actionBtn" type="button">Scan</button>
+              <button class="hcc__actionBtn" type="button">Test</button>
             </div>
           </article>
 
-          <article class="hcc__card" aria-label="Network statistics">
+          <article class="hcc__card hcc__card--sparks" aria-label="Sparklines">
             <header class="hcc__cardHead">
-              <h2 class="hcc__cardTitle">Network statistics</h2>
+              <h2 class="hcc__cardTitle">Trends</h2>
               <button class="hcc__kebab" type="button" aria-label="More options">⋯</button>
             </header>
 
-            <div class="hcc__stats" aria-label="Network statistics values">
-              <div class="hcc__stat">
-                <div class="hcc__statLabel">Signal strength</div>
-                <div class="hcc__statValue">{{ networkStats.signalDbm }} <span class="hcc__unit">dBm</span></div>
+            <div class="hcc__sparkRows" role="list" aria-label="Trend sparklines">
+              <div class="hcc__sparkRow" role="listitem" aria-label="Yellow trend">
+                <div class="hcc__sparkLabel">Yellow</div>
+                <div class="hcc__sparkMini hcc__sparkMini--yellow" role="img" aria-label="Yellow sparkline"></div>
               </div>
-              <div class="hcc__stat">
-                <div class="hcc__statLabel">Latency</div>
-                <div class="hcc__statValue">{{ networkStats.latencyMs }} <span class="hcc__unit">ms</span></div>
+              <div class="hcc__sparkRow" role="listitem" aria-label="Green trend">
+                <div class="hcc__sparkLabel">Green</div>
+                <div class="hcc__sparkMini hcc__sparkMini--green" role="img" aria-label="Green sparkline"></div>
               </div>
-            </div>
-
-            <div class="hcc__areaCharts" aria-label="Download speed graphs">
-              <div class="hcc__area hcc__area--green" role="img" aria-label="Area chart green"></div>
-              <div class="hcc__area hcc__area--red" role="img" aria-label="Area chart red"></div>
+              <div class="hcc__sparkRow" role="listitem" aria-label="Pink trend">
+                <div class="hcc__sparkLabel">Pink</div>
+                <div class="hcc__sparkMini hcc__sparkMini--pink" role="img" aria-label="Pink sparkline"></div>
+              </div>
             </div>
           </article>
         </aside>

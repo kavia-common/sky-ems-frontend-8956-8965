@@ -3,11 +3,6 @@ import { Component } from '@angular/core';
 
 type NavKey = 'Dashboard' | 'Reports' | 'Search';
 
-type ActivityItem = {
-  time: string;
-  message: string;
-};
-
 type DeviceInfo = {
   deviceId: string;
   firmware: string;
@@ -23,21 +18,10 @@ type WifiDetails = {
   security: string;
 };
 
-type EthernetStatus = {
-  ip: string;
-  subnetMask: string;
-  connected: boolean;
-};
-
 type NotificationCounts = {
   alerts: number;
   warnings: number;
   messages: number;
-};
-
-type SpeedTest = {
-  downloadMbps: number;
-  uploadMbps: number;
 };
 
 type NetworkStats = {
@@ -46,12 +30,14 @@ type NetworkStats = {
 };
 
 /**
- * Home centric console page — modern network monitoring dashboard UI.
+ * Home centric console page — dashboard UI.
  *
- * Layout per user_input_ref:
- * - Left vertical sidebar with icons (Dashboard, Reports, Search)
- * - Top header bar: "Welcome John Doe"
- * - 3-column main dashboard with specified panels/cards
+ * Source of truth: `/attachments/image.png`
+ *
+ * Layout:
+ * - Wide left sidebar with text navigation
+ * - Top bar with title, search, and small icon/avatar buttons
+ * - 3-column dashboard grid with chart cards, quick actions, and sparklines (visual placeholders)
  */
 @Component({
   selector: 'app-home-centric-console',
@@ -61,7 +47,7 @@ type NetworkStats = {
   styleUrl: './home-centric-console.component.css',
 })
 export class HomeCentricConsoleComponent {
-  /** Username shown in the header welcome and user menu. */
+  /** Username used for avatar initial. */
   userName = 'John Doe';
 
   activeNav: NavKey = 'Dashboard';
@@ -81,21 +67,10 @@ export class HomeCentricConsoleComponent {
     security: 'WPA2',
   };
 
-  ethernetStatus: EthernetStatus = {
-    ip: '192.168.1.101',
-    subnetMask: '255.255.255.0',
-    connected: true,
-  };
-
   notifications: NotificationCounts = {
     alerts: 3,
     warnings: 7,
     messages: 12,
-  };
-
-  speedTest: SpeedTest = {
-    downloadMbps: 320,
-    uploadMbps: 42,
   };
 
   networkStats: NetworkStats = {
@@ -103,28 +78,9 @@ export class HomeCentricConsoleComponent {
     latencyMs: 75,
   };
 
-  recentActivity: ActivityItem[] = [
-    { time: '09:12', message: 'Device connected: Laptop' },
-    { time: '09:18', message: 'WiFi channel optimized' },
-    { time: '09:25', message: 'Firmware check completed' },
-    { time: '09:31', message: 'Speed test scheduled' },
-    { time: '09:44', message: 'New warning: signal fluctuation' },
-  ];
-
   // PUBLIC_INTERFACE
   setActiveNav(key: NavKey): void {
     /** Sets the active sidebar navigation item (visual only; no routing in this view). */
     this.activeNav = key;
-  }
-
-  // PUBLIC_INTERFACE
-  runSpeedTest(): void {
-    /**
-     * Triggers a speed test action (placeholder).
-     * In a real implementation, this would call an API and update download/upload values.
-     */
-    // Keep as a no-op placeholder while preserving UX affordance.
-    // eslint-disable-next-line no-console
-    console.log('Run Test clicked');
   }
 }

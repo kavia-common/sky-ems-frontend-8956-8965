@@ -1,10 +1,10 @@
 <div class="ic" role="application" aria-label="Insight console">
 
-  <!-- LEFT SIDEBAR (icon-only / compact) -->
+  <!-- LEFT SIDEBAR -->
   <aside class="ic__sidebar" role="navigation" aria-label="Primary">
     <div class="ic__sideBrand" aria-label="Insight Console brand">
-      <div class="ic__sideBrandLogo" aria-hidden="true">S</div>
-      <div class="ic__sideBrandTitle">Sky Ems</div>
+      <div class="ic__sideBrandLogo" aria-hidden="true">IC</div>
+      <div class="ic__sideBrandTitle">Insight Console</div>
     </div>
 
     <ul class="ic__nav" role="list" aria-label="Sidebar navigation">
@@ -69,12 +69,9 @@
 
   <!-- MAIN -->
   <div class="ic__main">
-    <!-- TOPBAR -->
+    <!-- TOPBAR (lavender band, right-aligned welcome + avatar only) -->
     <header class="ic__topbar" role="banner" aria-label="Header">
-      <div class="ic__topbarLeft">
-        <div class="ic__pageTitle">Insight Console</div>
-      </div>
-
+      <div class="ic__topbarSpacer"></div>
       <div class="ic__topbarRight" aria-label="Header actions">
         <span class="ic__welcome">Welcome, {{ userName }}!</span>
         <span class="ic__avatarCircle" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
@@ -83,6 +80,15 @@
 
     <!-- CONTENT -->
     <main class="ic__content" role="main" aria-label="Insight console content">
+
+      <!-- Page heading row -->
+      <div class="ic__pageHead">
+        <h1 class="ic__pageTitle">Insight Console</h1>
+        <div class="ic__pageHeadRight">
+          <span class="ic__welcomeSub">Welcome, {{ userName }}!</span>
+        </div>
+      </div>
+
       <div class="ic__grid">
 
         <!-- LEFT COLUMN: AI Chat / Query Card (large) -->
@@ -105,7 +111,6 @@
                 preserveAspectRatio="none"
                 aria-hidden="true"
               >
-                <!-- y-axis ticks -->
                 <g class="ic__chartTicks">
                   <text x="6" y="30" font-size="10" fill="#9aa3b2">100</text>
                   <text x="6" y="70" font-size="10" fill="#9aa3b2">80</text>
@@ -114,7 +119,6 @@
                   <text x="6" y="190" font-size="10" fill="#9aa3b2">20</text>
                 </g>
 
-                <!-- grid lines -->
                 <g opacity="0.45">
                   <line x1="36" y1="30" x2="710" y2="30" stroke="#e9edf3" />
                   <line x1="36" y1="70" x2="710" y2="70" stroke="#e9edf3" />
@@ -130,13 +134,11 @@
                   </linearGradient>
                 </defs>
 
-                <!-- Area fill -->
                 <path
                   fill="url(#icAreaGrad)"
                   d="M36,168 C66,160 86,150 116,152 C146,154 176,160 206,138 C236,116 266,150 296,140 C326,130 356,120 386,128 C416,136 446,100 476,102 C506,104 536,86 566,80 C596,74 626,96 656,78 C686,60 696,70 710,68 L710,200 L36,200 Z"
                 />
 
-                <!-- Line -->
                 <path
                   fill="none"
                   stroke="#22a877"
@@ -146,12 +148,10 @@
                   d="M36,168 C66,160 86,150 116,152 C146,154 176,160 206,138 C236,116 266,150 296,140 C326,130 356,120 386,128 C416,136 446,100 476,102 C506,104 536,86 566,80 C596,74 626,96 656,78 C686,60 696,70 710,68"
                 />
 
-                <!-- Data points -->
                 <circle cx="206" cy="138" r="3.4" fill="#22a877" stroke="#fff" stroke-width="1.2" />
                 <circle cx="386" cy="128" r="3.4" fill="#22a877" stroke="#fff" stroke-width="1.2" />
                 <circle cx="566" cy="80" r="3.4" fill="#22a877" stroke="#fff" stroke-width="1.2" />
 
-                <!-- x-axis labels -->
                 <g font-size="10" fill="#9aa3b2" text-anchor="middle">
                   <text x="56" y="212">Jan</text>
                   <text x="116" y="212">Feb</text>
@@ -169,14 +169,12 @@
               </svg>
             </div>
 
-            <!-- Description text -->
             <p class="ic__chatDesc">
               Ask anything about your network data in plain language. The Insight Console
               translates your query into rich analytics and surfaces relevant trends across
               all of your sites.
             </p>
 
-            <!-- Query input + submit -->
             <div class="ic__queryRow">
               <input
                 class="ic__queryInput"
@@ -197,10 +195,9 @@
           </article>
         </section>
 
-        <!-- RIGHT REGION: KPI card + small metric tiles grid -->
+        <!-- RIGHT REGION: KPI card -->
         <section class="ic__col ic__col--right">
 
-          <!-- Top KPI / Progress card -->
           <article class="ic__card ic__card--kpi" aria-label="Daily usage gauge">
             <header class="ic__cardHead">
               <div class="ic__kpiHead">
@@ -231,7 +228,6 @@
           <!-- Small tiles grid (3 columns x 2 rows) -->
           <div class="ic__tilesGrid" aria-label="Network metric tiles">
 
-            <!-- Tile 1: Number of WiFi Users (green bars) -->
             <article class="ic__tile" aria-label="Number of WiFi Users">
               <div class="ic__tileTitle">Number of WiFi Users</div>
               <div class="ic__tileChart">
@@ -254,7 +250,6 @@
               </div>
             </article>
 
-            <!-- Tile 2: WiFi Band (donut purple) -->
             <article class="ic__tile" aria-label="WiFi Band">
               <div class="ic__tileTitle">WiFi Band</div>
               <div class="ic__tileChart ic__tileChart--donut">
@@ -280,7 +275,6 @@
               </div>
             </article>
 
-            <!-- Tile 3: Top WiFi Site (sparkline) -->
             <article class="ic__tile" aria-label="Top WiFi Site">
               <div class="ic__tileTitle">Top WiFi Site</div>
               <div class="ic__tileChart">
@@ -308,7 +302,6 @@
               </div>
             </article>
 
-            <!-- Tile 4: Avg Network Speed (gauge) -->
             <article class="ic__tile" aria-label="Avg Network Speed">
               <div class="ic__tileTitle">Avg Network Speed</div>
               <div class="ic__tileChart ic__tileChart--gauge">
@@ -324,7 +317,6 @@
               </div>
             </article>
 
-            <!-- Tile 5: Network Health (donut teal) -->
             <article class="ic__tile" aria-label="Network Health">
               <div class="ic__tileTitle">Network Health</div>
               <div class="ic__tileChart ic__tileChart--donut">
@@ -350,7 +342,6 @@
               </div>
             </article>
 
-            <!-- Tile 6: Avg Latency (sparkline) -->
             <article class="ic__tile" aria-label="Avg Latency">
               <div class="ic__tileTitle">Avg Latency</div>
               <div class="ic__tileChart">

@@ -854,7 +854,7 @@ button {
 
 .ic {
   /* Canvas + surfaces */
-  --ic-canvas: #f3f4f8;            /* page background */
+  --ic-canvas: #f5eef9;            /* page background — soft lavender to match screenshot */
   --ic-surface: #ffffff;           /* cards */
   --ic-border: #e5e7eb;
   --ic-divider: #eef0f4;
@@ -1180,12 +1180,12 @@ button {
 
 .ic .ic__submitBtn {
   height: 30px;
-  padding: 0 18px;
+  padding: 0 22px;
   border-radius: 999px;
   border: none;
   background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
   color: #fff;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;

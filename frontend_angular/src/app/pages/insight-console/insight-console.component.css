@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+/* Minimal component CSS — all major .ic styles live in global src/styles.css
+   under the .ic scope to avoid Angular component style budget violations. */
+.ic {
+  min-height: 100vh;
+  display: block;
+}

@@ -846,3 +846,645 @@ button {
     gap: 10px;
   }
 }
+
+/* ================================
+   Insight Console (scoped)
+   Source of truth: /attachments/image.png
+   ================================ */
+
+.ic {
+  /* Canvas */
+  --ic-canvas: #f5f6f8;
+  --ic-surface: #ffffff;
+  --ic-border: #e6e8ee;
+  --ic-divider: #eef0f4;
+
+  --ic-text: #1f2430;
+  --ic-muted: #6b7280;
+  --ic-muted2: #9aa3b2;
+
+  /* Series colors */
+  --ic-teal: #1fb6c9;
+  --ic-green: #22c55e;
+  --ic-purple: #8b5cf6;
+  --ic-orange: #f59e0b;
+  --ic-pink: #ec4899;
+  --ic-yellow: #fbbf24;
+  --ic-red: #ef4444;
+  --ic-blue: #2563eb;
+
+  --ic-radius: 8px;
+
+  min-height: 100vh;
+  background: var(--ic-canvas);
+  color: var(--ic-text);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.25;
+
+  display: grid;
+  grid-template-columns: 205px 1fr;
+}
+
+/* === Sidebar === */
+.ic .ic__sidebar {
+  background: var(--ic-surface);
+  border-right: 1px solid var(--ic-border);
+  padding: 12px 10px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}
+
+.ic .ic__sidebrandTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ic-muted);
+  padding: 6px 8px 10px;
+}
+
+.ic .ic__nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+
+.ic .ic__navitem {
+  width: 100%;
+  height: 34px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  color: var(--ic-muted);
+  text-align: left;
+}
+
+.ic .ic__navitemIco {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--ic-muted);
+  font-size: 12px;
+}
+
+.ic .ic__navitemLabel {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ic .ic__navitem:hover {
+  background: #f7f8fb;
+}
+
+.ic .ic__navitem--active {
+  background: #eef2ff;
+  color: #111827;
+}
+
+.ic .ic__navitem--active .ic__navitemIco {
+  color: #111827;
+}
+
+/* === Main wrapper === */
+.ic .ic__main {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 48px 1fr;
+}
+
+/* === Topbar === */
+.ic .ic__topbar {
+  background: var(--ic-surface);
+  border-bottom: 1px solid var(--ic-border);
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 300px) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.ic .ic__pageTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ic .ic__search {
+  height: 28px;
+  border: 1px solid var(--ic-border);
+  border-radius: 6px;
+  background: #fff;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ic .ic__searchIco {
+  color: var(--ic-muted2);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.ic .ic__searchInput {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  color: var(--ic-text);
+}
+
+.ic .ic__searchInput::placeholder {
+  color: var(--ic-muted2);
+}
+
+.ic .ic__topbarRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ic .ic__userInfo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ic .ic__userName {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ic-muted);
+  white-space: nowrap;
+}
+
+.ic .ic__avatarCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #e9edf3;
+  border: 1px solid var(--ic-border);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #111827;
+  font-size: 13px;
+}
+
+/* === Content area === */
+.ic .ic__content {
+  padding: 16px;
+  overflow: auto;
+}
+
+.ic .ic__grid {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.ic .ic__col {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-width: 0;
+}
+
+/* === Card system === */
+.ic .ic__card {
+  background: var(--ic-surface);
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius);
+  padding: 12px;
+  min-width: 0;
+}
+
+.ic .ic__cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ic .ic__cardTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ic .ic__kebab {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--ic-divider);
+  background: #fff;
+  color: var(--ic-muted);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ic .ic__kebab:hover {
+  background: #f7f8fb;
+}
+
+/* === Chat / AI panel === */
+.ic .ic__card--chat {
+  min-height: 420px;
+}
+
+.ic .ic__kpiHighlight {
+  margin-bottom: 8px;
+}
+
+.ic .ic__kpiMain {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.ic .ic__areaChartWrap {
+  border: 1px solid var(--ic-divider);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px 4px;
+  margin-bottom: 12px;
+}
+
+.ic .ic__areaChart {
+  width: 100%;
+  height: 160px;
+  display: block;
+}
+
+.ic .ic__chartLabels {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0 6px;
+  font-size: 10px;
+  color: var(--ic-muted2);
+}
+
+.ic .ic__chatDesc {
+  font-size: 11px;
+  color: var(--ic-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.ic .ic__queryRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ic .ic__queryInput {
+  flex: 1;
+  height: 32px;
+  border: 1px solid var(--ic-border);
+  border-radius: 6px;
+  background: #fff;
+  padding: 0 10px;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--ic-text);
+  outline: none;
+}
+
+.ic .ic__queryInput::placeholder {
+  color: var(--ic-muted2);
+}
+
+.ic .ic__queryInput:focus {
+  border-color: var(--ic-teal);
+}
+
+.ic .ic__submitBtn {
+  height: 32px;
+  padding: 0 18px;
+  border-radius: 6px;
+  border: none;
+  background: var(--ic-blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 150ms ease;
+}
+
+.ic .ic__submitBtn:hover {
+  background: color-mix(in srgb, var(--ic-blue) 85%, #000);
+}
+
+/* === Stats card (middle top) === */
+.ic .ic__filterGroup {
+  display: inline-flex;
+  gap: 4px;
+  background: #f7f8fb;
+  border: 1px solid var(--ic-border);
+  border-radius: 999px;
+  padding: 2px;
+}
+
+.ic .ic__filterBtn {
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--ic-muted);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+  white-space: nowrap;
+}
+
+.ic .ic__filterBtn--active {
+  background: #fff;
+  color: #111827;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.ic .ic__kpiRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0 4px;
+}
+
+.ic .ic__kpiItem {
+  display: grid;
+  gap: 2px;
+}
+
+.ic .ic__kpiLabel {
+  font-size: 10px;
+  color: var(--ic-muted2);
+  font-weight: 600;
+}
+
+.ic .ic__kpiValue {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.ic .ic__kpiValue--muted {
+  color: var(--ic-muted);
+  font-size: 16px;
+}
+
+.ic .ic__kpiDivider {
+  font-size: 20px;
+  color: var(--ic-muted2);
+  font-weight: 300;
+  align-self: flex-end;
+  padding-bottom: 2px;
+}
+
+/* === Progress items card (middle bottom) === */
+.ic .ic__progressList {
+  display: grid;
+  gap: 8px;
+}
+
+.ic .ic__progressItem {
+  display: grid;
+  grid-template-columns: 80px 1fr 36px;
+  align-items: center;
+  gap: 8px;
+}
+
+.ic .ic__progressLabel {
+  font-size: 11px;
+  color: var(--ic-muted);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ic .ic__progressTrack {
+  height: 6px;
+  background: #f0f1f5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ic .ic__progressFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 400ms ease;
+}
+
+.ic .ic__progressPct {
+  font-size: 10px;
+  font-weight: 700;
+  color: #111827;
+  text-align: right;
+}
+
+/* === Chips === */
+.ic .ic__chip {
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--ic-border);
+  background: #f7f8fb;
+  color: var(--ic-muted);
+  white-space: nowrap;
+}
+
+.ic .ic__chip--ok {
+  background: #dcfce7;
+  border-color: color-mix(in srgb, var(--ic-green) 28%, #fff);
+  color: color-mix(in srgb, var(--ic-green) 80%, #0b1220);
+}
+
+/* === Search result card (right top) === */
+.ic .ic__resultBody {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--ic-divider);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.ic .ic__resultRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--ic-divider);
+}
+
+.ic .ic__resultRow:first-child {
+  border-top: 0;
+}
+
+.ic .ic__resultLabel {
+  font-size: 11px;
+  color: var(--ic-muted);
+  font-weight: 600;
+}
+
+.ic .ic__resultValue {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* === Key metrics card (right middle) === */
+.ic .ic__metricsList {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--ic-divider);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.ic .ic__metricItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--ic-divider);
+}
+
+.ic .ic__metricItem:first-child {
+  border-top: 0;
+}
+
+.ic .ic__metricLabel {
+  flex: 1;
+  font-size: 11px;
+  color: var(--ic-muted);
+  font-weight: 600;
+}
+
+.ic .ic__metricValue {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ic .ic__trend {
+  font-size: 10px;
+  width: 16px;
+  text-align: center;
+}
+
+.ic .ic__trend--up {
+  color: var(--ic-green);
+}
+
+.ic .ic__trend--down {
+  color: var(--ic-red);
+}
+
+/* === Bar chart card (right bottom) === */
+.ic .ic__barChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 90px;
+  padding: 8px 4px 0;
+}
+
+.ic .ic__barWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+}
+
+.ic .ic__bar {
+  width: 100%;
+  border-radius: 4px 4px 2px 2px;
+  background: color-mix(in srgb, var(--ic-teal) 70%, #fff);
+  min-height: 4px;
+  transition: height 300ms ease;
+}
+
+.ic .ic__barLabel {
+  font-size: 9px;
+  color: var(--ic-muted2);
+  text-align: center;
+  line-height: 1;
+}
+
+/* === Focus states === */
+.ic .ic__navitem:focus-visible,
+.ic .ic__queryInput:focus-visible,
+.ic .ic__submitBtn:focus-visible,
+.ic .ic__kebab:focus-visible,
+.ic .ic__filterBtn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ic-teal) 55%, #fff);
+  outline-offset: 2px;
+}
+
+/* === Responsive === */
+@media (max-width: 1199px) {
+  .ic .ic__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ic .ic__col--right {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 899px) {
+  .ic {
+    grid-template-columns: 1fr;
+  }
+
+  .ic .ic__sidebar {
+    display: none;
+  }
+
+  .ic .ic__topbar {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .ic .ic__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ic .ic__col--right {
+    grid-column: auto;
+  }
+}

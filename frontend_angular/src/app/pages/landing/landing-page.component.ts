@@ -27,6 +27,11 @@ export class LandingPageComponent {
       return;
     }
 
+    if (cardName === 'Insight Console') {
+      void this.router.navigate(['/insight-console']);
+      return;
+    }
+
     console.log(`Clicked card: ${cardName}`);
   }
 }

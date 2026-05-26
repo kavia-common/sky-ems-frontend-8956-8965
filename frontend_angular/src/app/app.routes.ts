@@ -16,4 +16,12 @@ export const routes: Routes = [
         (m) => m.HomeCentricConsoleComponent,
       ),
   },
+  {
+    path: 'insight-console',
+    title: 'Insight Console',
+    loadComponent: () =>
+      import('./pages/insight-console/insight-console.component').then(
+        (m) => m.InsightConsoleComponent,
+      ),
+  },
 ];

@@ -1,0 +1,346 @@
+<div class="ic" role="application" aria-label="Insight console">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="ic__sidebar" role="navigation" aria-label="Primary">
+    <div class="ic__sidebrand" aria-label="Insight Console brand">
+      <div class="ic__sidebrandTitle">Insight Console</div>
+    </div>
+
+    <ul class="ic__nav" role="list" aria-label="Sidebar navigation">
+      <li role="listitem">
+        <button
+          type="button"
+          class="ic__navitem"
+          [class.ic__navitem--active]="activeNav === 'Dashboard'"
+          (click)="setActiveNav('Dashboard')"
+          [attr.aria-current]="activeNav === 'Dashboard' ? 'page' : null"
+        >
+          <span class="ic__navitemIco" aria-hidden="true">▦</span>
+          <span class="ic__navitemLabel">Dashboard</span>
+        </button>
+      </li>
+      <li role="listitem">
+        <button
+          type="button"
+          class="ic__navitem"
+          [class.ic__navitem--active]="activeNav === 'Alerts'"
+          (click)="setActiveNav('Alerts')"
+          [attr.aria-current]="activeNav === 'Alerts' ? 'page' : null"
+        >
+          <span class="ic__navitemIco" aria-hidden="true">🔔</span>
+          <span class="ic__navitemLabel">Alerts</span>
+        </button>
+      </li>
+      <li role="listitem">
+        <button
+          type="button"
+          class="ic__navitem"
+          [class.ic__navitem--active]="activeNav === 'Queue'"
+          (click)="setActiveNav('Queue')"
+          [attr.aria-current]="activeNav === 'Queue' ? 'page' : null"
+        >
+          <span class="ic__navitemIco" aria-hidden="true">☰</span>
+          <span class="ic__navitemLabel">Queue</span>
+        </button>
+      </li>
+      <li role="listitem">
+        <button
+          type="button"
+          class="ic__navitem"
+          [class.ic__navitem--active]="activeNav === 'Reports'"
+          (click)="setActiveNav('Reports')"
+          [attr.aria-current]="activeNav === 'Reports' ? 'page' : null"
+        >
+          <span class="ic__navitemIco" aria-hidden="true">▤</span>
+          <span class="ic__navitemLabel">Reports</span>
+        </button>
+      </li>
+      <li role="listitem">
+        <button
+          type="button"
+          class="ic__navitem"
+          [class.ic__navitem--active]="activeNav === 'Search'"
+          (click)="setActiveNav('Search')"
+          [attr.aria-current]="activeNav === 'Search' ? 'page' : null"
+        >
+          <span class="ic__navitemIco" aria-hidden="true">⌕</span>
+          <span class="ic__navitemLabel">Search</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="ic__main">
+    <!-- TOPBAR -->
+    <header class="ic__topbar" role="banner" aria-label="Header">
+      <div class="ic__topbarLeft">
+        <div class="ic__pageTitle">Insight Console</div>
+      </div>
+
+      <label class="ic__search" aria-label="Search">
+        <span class="ic__searchIco" aria-hidden="true">⌕</span>
+        <input
+          class="ic__searchInput"
+          type="search"
+          placeholder="search"
+          aria-label="Search input"
+        />
+      </label>
+
+      <div class="ic__topbarRight" aria-label="Header actions">
+        <div class="ic__userInfo">
+          <span class="ic__userName">Welcome, {{ userName }}</span>
+          <span class="ic__avatarCircle" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="ic__content" role="main" aria-label="Insight console content">
+      <div class="ic__grid">
+
+        <!-- LEFT COLUMN: AI Chat Panel -->
+        <div class="ic__col ic__col--left">
+          <article class="ic__card ic__card--chat" aria-label="Ask me your queries">
+            <header class="ic__cardHead">
+              <h2 class="ic__cardTitle">Ask me your queries!</h2>
+              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
+            </header>
+
+            <!-- KPI Highlight -->
+            <div class="ic__kpiHighlight" aria-label="Primary KPI">
+              <span class="ic__kpiMain">dk 8lim</span>
+            </div>
+
+            <!-- Area Chart -->
+            <div class="ic__areaChartWrap" role="img" aria-label="Analytics area chart">
+              <svg
+                class="ic__areaChart"
+                viewBox="0 0 560 180"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <!-- Grid lines -->
+                <g opacity="0.5">
+                  <line x1="0" y1="36" x2="560" y2="36" stroke="#e9edf3" stroke-width="1" />
+                  <line x1="0" y1="72" x2="560" y2="72" stroke="#e9edf3" stroke-width="1" />
+                  <line x1="0" y1="108" x2="560" y2="108" stroke="#e9edf3" stroke-width="1" />
+                  <line x1="0" y1="144" x2="560" y2="144" stroke="#e9edf3" stroke-width="1" />
+                </g>
+
+                <!-- Area fill -->
+                <defs>
+                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#1fb6c9" stop-opacity="0.28" />
+                    <stop offset="100%" stop-color="#1fb6c9" stop-opacity="0.02" />
+                  </linearGradient>
+                </defs>
+
+                <polygon
+                  fill="url(#areaGrad)"
+                  points="0,180 0,130 56,110 112,120 168,95 224,100 280,80 336,72 392,60 448,50 504,42 560,38 560,180"
+                />
+
+                <!-- Line -->
+                <polyline
+                  fill="none"
+                  stroke="#1fb6c9"
+                  stroke-width="2.5"
+                  points="0,130 56,110 112,120 168,95 224,100 280,80 336,72 392,60 448,50 504,42 560,38"
+                />
+
+                <!-- Data points -->
+                <circle cx="280" cy="80" r="4" fill="#1fb6c9" />
+                <circle cx="392" cy="60" r="4" fill="#1fb6c9" />
+                <circle cx="504" cy="42" r="4" fill="#1fb6c9" />
+              </svg>
+
+              <!-- X-axis labels -->
+              <div class="ic__chartLabels" aria-hidden="true">
+                <span>Jan</span>
+                <span>Feb</span>
+                <span>Mar</span>
+                <span>Apr</span>
+                <span>May</span>
+                <span>Jun</span>
+                <span>Jul</span>
+                <span>Aug</span>
+                <span>Sep</span>
+                <span>Oct</span>
+                <span>Nov</span>
+              </div>
+            </div>
+
+            <!-- Description text -->
+            <p class="ic__chatDesc">
+              Explore insights with natural-language queries. Type your question below and get
+              AI-powered analytics answers instantly.
+            </p>
+
+            <!-- Query input + submit -->
+            <div class="ic__queryRow">
+              <input
+                class="ic__queryInput"
+                type="text"
+                placeholder="Ask a question about your data…"
+                [(ngModel)]="queryText"
+                aria-label="Enter your query"
+              />
+              <button
+                class="ic__submitBtn"
+                type="button"
+                (click)="submitQuery()"
+                aria-label="Submit query"
+              >
+                Submit
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- MIDDLE COLUMN: Stats + Progress -->
+        <div class="ic__col ic__col--mid">
+          <!-- Stats Header Card -->
+          <article class="ic__card ic__card--stats" aria-label="Statistics overview">
+            <header class="ic__cardHead">
+              <h2 class="ic__cardTitle">Statistics</h2>
+              <div class="ic__filterGroup" role="group" aria-label="Time filter">
+                <button
+                  class="ic__filterBtn"
+                  [class.ic__filterBtn--active]="activeFilter === 'week'"
+                  type="button"
+                  (click)="setFilter('week')"
+                >This week</button>
+                <button
+                  class="ic__filterBtn"
+                  [class.ic__filterBtn--active]="activeFilter === 'month'"
+                  type="button"
+                  (click)="setFilter('month')"
+                >This month</button>
+                <button
+                  class="ic__filterBtn"
+                  [class.ic__filterBtn--active]="activeFilter === 'total'"
+                  type="button"
+                  (click)="setFilter('total')"
+                >Total</button>
+              </div>
+            </header>
+
+            <div class="ic__kpiRow" aria-label="KPI summary">
+              <div class="ic__kpiItem">
+                <div class="ic__kpiLabel">Queries</div>
+                <div class="ic__kpiValue">{{ primaryKpi }}</div>
+              </div>
+              <div class="ic__kpiDivider" aria-hidden="true">/</div>
+              <div class="ic__kpiItem">
+                <div class="ic__kpiLabel">Total</div>
+                <div class="ic__kpiValue ic__kpiValue--muted">{{ secondaryKpi }}</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Progress Items Card -->
+          <article class="ic__card ic__card--progress" aria-label="Category breakdown">
+            <header class="ic__cardHead">
+              <h2 class="ic__cardTitle">Breakdown</h2>
+              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
+            </header>
+
+            <div class="ic__progressList" role="list" aria-label="Category progress bars">
+              @for (item of progressItems; track item.label) {
+                <div class="ic__progressItem" role="listitem">
+                  <div class="ic__progressLabel">{{ item.label }}</div>
+                  <div class="ic__progressTrack" [attr.aria-label]="item.label + ': ' + item.percent + '%'">
+                    <div
+                      class="ic__progressFill"
+                      [style.width.%]="item.percent"
+                      [style.background]="item.color"
+                    ></div>
+                  </div>
+                  <div class="ic__progressPct">{{ item.percent }}%</div>
+                </div>
+              }
+            </div>
+          </article>
+        </div>
+
+        <!-- RIGHT COLUMN: Search Result + Key Metrics + Bar Chart -->
+        <aside class="ic__col ic__col--right">
+          <!-- Search Query Result -->
+          <article class="ic__card ic__card--result" aria-label="Search query result">
+            <header class="ic__cardHead">
+              <h2 class="ic__cardTitle">Search Query Result</h2>
+              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
+            </header>
+
+            <div class="ic__resultBody" role="region" aria-label="Query result details">
+              <div class="ic__resultRow">
+                <span class="ic__resultLabel">Status</span>
+                <span class="ic__chip ic__chip--ok">Active</span>
+              </div>
+              <div class="ic__resultRow">
+                <span class="ic__resultLabel">Source</span>
+                <span class="ic__resultValue">Analytics DB</span>
+              </div>
+              <div class="ic__resultRow">
+                <span class="ic__resultLabel">Records</span>
+                <span class="ic__resultValue">4,821</span>
+              </div>
+              <div class="ic__resultRow">
+                <span class="ic__resultLabel">Latency</span>
+                <span class="ic__resultValue">128ms</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Key Metrics -->
+          <article class="ic__card ic__card--metrics" aria-label="Key metrics">
+            <header class="ic__cardHead">
+              <h2 class="ic__cardTitle">Key Metrics</h2>
+              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
+            </header>
+
+            <div class="ic__metricsList" role="list" aria-label="Key metrics list">
+              @for (metric of keyMetrics; track metric.label) {
+                <div class="ic__metricItem" role="listitem">
+                  <span class="ic__metricLabel">{{ metric.label }}</span>
+                  <span class="ic__metricValue">{{ metric.value }}</span>
+                  @if (metric.trend === 'up') {
+                    <span class="ic__trend ic__trend--up" aria-label="trending up">▲</span>
+                  } @else if (metric.trend === 'down') {
+                    <span class="ic__trend ic__trend--down" aria-label="trending down">▼</span>
+                  } @else {
+                    <span class="ic__trend" aria-label="stable">–</span>
+                  }
+                </div>
+              }
+            </div>
+          </article>
+
+          <!-- Insight About: Bar Chart -->
+          <article class="ic__card ic__card--barchart" aria-label="Insight about bar chart">
+            <header class="ic__cardHead">
+              <h2 class="ic__cardTitle">Insight About</h2>
+              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
+            </header>
+
+            <div class="ic__barChart" role="img" aria-label="Monthly bar chart">
+              @for (bar of barChartData; track $index) {
+                <div class="ic__barWrap">
+                  <div
+                    class="ic__bar"
+                    [style.height.%]="bar"
+                    [attr.aria-label]="barChartLabels[$index] + ': ' + bar"
+                  ></div>
+                  <div class="ic__barLabel">{{ barChartLabels[$index] }}</div>
+                </div>
+              }
+            </div>
+          </article>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</div>

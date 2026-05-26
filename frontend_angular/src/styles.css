@@ -854,7 +854,7 @@ button {
 
 .ic {
   /* Canvas + surfaces */
-  --ic-canvas: #eef0f5;            /* page background */
+  --ic-canvas: #f3f4f8;            /* page background */
   --ic-surface: #ffffff;           /* cards */
   --ic-border: #e5e7eb;
   --ic-divider: #eef0f4;
@@ -894,45 +894,49 @@ button {
   line-height: 1.3;
 
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 156px 1fr;
 }
 
 /* === Sidebar === */
 .ic .ic__sidebar {
   background: var(--ic-side-bg);
   border-right: 1px solid #e3d9ed;
-  padding: 14px 10px 14px;
+  padding: 18px 12px 14px;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 14px;
+  gap: 18px;
 }
 
 .ic .ic__sideBrand {
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
   align-items: center;
   gap: 8px;
-  padding: 4px 6px 10px;
+  padding: 2px 6px 14px;
   border-bottom: 1px solid #e3d9ed;
+  text-align: center;
 }
 
 .ic .ic__sideBrandLogo {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
   background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
   color: #fff;
   display: grid;
   place-items: center;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 800;
+  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.35);
 }
 
 .ic .ic__sideBrandTitle {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: #4b3a5b;
-  line-height: 1.15;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
 .ic .ic__nav {
@@ -1016,7 +1020,7 @@ button {
 .ic .ic__topbar {
   background: var(--ic-lavender);
   border-bottom: 1px solid #ddd0e8;
-  padding: 0 22px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1024,7 +1028,7 @@ button {
 }
 
 .ic .ic__pageTitle {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 800;
   color: #2b2236;
   letter-spacing: 0.01em;
@@ -1033,19 +1037,19 @@ button {
 .ic .ic__topbarRight {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .ic .ic__welcome {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #2b2236;
   white-space: nowrap;
 }
 
 .ic .ic__avatarCircle {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
   background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
   border: 1px solid #d8c8e4;
@@ -1053,25 +1057,26 @@ button {
   place-items: center;
   font-weight: 800;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 13.5px;
+  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.30);
 }
 
 /* === Content area === */
 .ic .ic__content {
-  padding: 18px 22px 24px;
+  padding: 20px 24px 28px;
   overflow: auto;
 }
 
 .ic .ic__grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 18px;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px;
   align-items: start;
 }
 
 .ic .ic__col {
   display: grid;
-  gap: 16px;
+  gap: 18px;
   align-content: start;
   min-width: 0;
 }
@@ -1101,26 +1106,26 @@ button {
 }
 
 .ic .ic__cardTitleSm {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--ic-muted);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 /* === Chat / Query Card (left, large) === */
 .ic .ic__card--chat {
-  min-height: 460px;
+  min-height: 480px;
   display: grid;
   grid-template-rows: auto auto 1fr auto auto;
-  gap: 10px;
+  gap: 12px;
 }
 
 .ic .ic__kpiHighlight {
-  margin: -2px 0 2px;
+  margin: 2px 0 4px;
 }
 
 .ic .ic__kpiMain {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 800;
   color: #1f2430;
   letter-spacing: -0.01em;
@@ -1211,7 +1216,7 @@ button {
 }
 
 .ic .ic__kpiBig {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: #1f2430;
   letter-spacing: -0.01em;
@@ -1219,7 +1224,7 @@ button {
 }
 
 .ic .ic__kpiBigSub {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ic-muted2);
   margin-left: 2px;
@@ -1228,19 +1233,19 @@ button {
 /* progress list */
 .ic .ic__progressList {
   display: grid;
-  gap: 10px;
-  margin-top: 4px;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 .ic .ic__progressItem {
   display: grid;
-  grid-template-columns: 84px 1fr 38px;
+  grid-template-columns: 92px 1fr 42px;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .ic .ic__progressLabel {
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--ic-muted);
   font-weight: 700;
   overflow: hidden;
@@ -1249,7 +1254,7 @@ button {
 }
 
 .ic .ic__progressTrack {
-  height: 8px;
+  height: 10px;
   background: #f0f1f5;
   border-radius: 999px;
   overflow: hidden;
@@ -1272,26 +1277,26 @@ button {
 .ic .ic__tilesGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
 }
 
 .ic .ic__tile {
   background: var(--ic-surface);
   border: 1px solid var(--ic-border);
   border-radius: var(--ic-radius);
-  padding: 10px 10px 8px;
+  padding: 12px 12px 10px;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  gap: 4px;
+  gap: 6px;
   min-width: 0;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
 }
 
 .ic .ic__tileTitle {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--ic-muted);
-  line-height: 1.2;
+  line-height: 1.25;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1300,7 +1305,7 @@ button {
 .ic .ic__tileChart {
   display: grid;
   place-items: center;
-  min-height: 56px;
+  min-height: 60px;
 }
 
 .ic .ic__tileChart svg {

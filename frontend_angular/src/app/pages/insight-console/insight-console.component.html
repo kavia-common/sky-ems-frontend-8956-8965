@@ -17,7 +17,7 @@
           [attr.aria-current]="activeNav === 'Dashboard' ? 'page' : null"
           aria-label="Dashboard"
         >
-          <span class="ic__navitemIco" aria-hidden="true">⌕</span>
+          <span class="ic__navitemIco" aria-hidden="true">▦</span>
           <span class="ic__navitemLabel">Dashboard</span>
         </button>
       </li>
@@ -56,7 +56,7 @@
           [attr.aria-current]="activeNav === 'Search' ? 'page' : null"
           aria-label="Search"
         >
-          <span class="ic__navitemIco" aria-hidden="true">⌖</span>
+          <span class="ic__navitemIco" aria-hidden="true">⌕</span>
           <span class="ic__navitemLabel">Search</span>
         </button>
       </li>
@@ -171,9 +171,9 @@
 
             <!-- Description text -->
             <p class="ic__chatDesc">
-              Explore insights with natural-language queries. Type your question below and get an
-              AI-powered answer instantly. The console will translate your query into analytics
-              and surface relevant trends.
+              Ask anything about your network data in plain language. The Insight Console
+              translates your query into rich analytics and surfaces relevant trends across
+              all of your sites.
             </p>
 
             <!-- Query input + submit -->
@@ -181,7 +181,7 @@
               <input
                 class="ic__queryInput"
                 type="text"
-                placeholder="Ask a question about your data…"
+                placeholder="Browse your query, paste your image graph of any data chunk for a snapshot of dimension"
                 [(ngModel)]="queryText"
                 aria-label="Enter your query"
               />

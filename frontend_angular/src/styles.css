@@ -854,7 +854,7 @@ button {
 
 .ic {
   /* Canvas + surfaces */
-  --ic-canvas: #f5eef9;            /* page background — soft lavender to match screenshot */
+  --ic-canvas: #ffffff;            /* page background — white to match screenshot (only header band is lavender) */
   --ic-surface: #ffffff;           /* cards */
   --ic-border: #e5e7eb;
   --ic-divider: #eef0f4;

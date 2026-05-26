@@ -1,22 +1,34 @@
 <div class="shell hcc" role="application" aria-label="Home centric console">
-  <header class="topbar" role="banner">
+  <header class="topbar" role="banner" aria-label="Top bar">
     <div class="topbar__left">
-      <div class="brand" aria-label="Application name">Home centric console</div>
+      <div class="brand" aria-label="Application name">
+        <span class="brand__word brand__word--accent">Humax</span>
+        <span class="brand__word">Cookie</span>
+        <span class="brand__word">Console</span>
+      </div>
+    </div>
 
-      <nav class="topnav" aria-label="Primary">
-        <a href="#" (click)="onTopLinkClick($event, 'Overview')" class="topnav__link">Overview</a>
-        <a href="#" (click)="onTopLinkClick($event, 'Reports')" class="topnav__link">Reports</a>
-        <a href="#" (click)="onTopLinkClick($event, 'Settings')" class="topnav__link">Settings</a>
-      </nav>
+    <div class="topbar__center" aria-label="Search">
+      <label class="search" aria-label="Search">
+        <span class="search__icon" aria-hidden="true">⌕</span>
+        <input
+          class="search__input"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </label>
     </div>
 
     <div class="topbar__right" aria-label="Header actions">
-      <button class="iconbtn" type="button" aria-label="Help" title="Help">
-        <span aria-hidden="true">❔</span>
-      </button>
-
-      <button class="iconbtn iconbtn--dot" type="button" aria-label="Notifications" title="Notifications">
+      <button class="iconbtn" type="button" aria-label="Notifications" title="Notifications">
         <span aria-hidden="true">🔔</span>
+      </button>
+      <button class="iconbtn" type="button" aria-label="Messages" title="Messages">
+        <span aria-hidden="true">💬</span>
+      </button>
+      <button class="iconbtn" type="button" aria-label="Help" title="Help">
+        <span aria-hidden="true">❓</span>
       </button>
 
       <button class="userbtn" type="button" aria-label="User menu" title="User menu">
@@ -28,9 +40,9 @@
   </header>
 
   <aside class="sidebar" role="navigation" aria-label="Sidebar">
-    <div class="sidebar__title">Navigation</div>
+    <div class="sidebar__logo" aria-label="Logo">LOGO</div>
 
-    <ul class="sidebar__list" role="list">
+    <ul class="sidebar__list" role="list" aria-label="Sidebar navigation">
       <li *ngFor="let item of sidebarItems" role="listitem">
         <button
           type="button"
@@ -48,37 +60,37 @@
 
   <main class="content" role="main" aria-label="Dashboard">
     <section class="grid" aria-label="Widgets">
-      <!-- 1) Line chart widget -->
-      <article class="card card--tall" aria-label="Performance over time">
+      <!-- 1) Performance over time (multi-line time series) -->
+      <article class="card card--wide card--tall" aria-label="Performance over time">
         <header class="card__header">
           <h2 class="card__title">Performance over time</h2>
           <div class="card__actions" aria-label="Card actions">
-            <span class="pill pill--success" aria-label="Up 2.8%">+2.8%</span>
-            <span class="pill pill--danger" aria-label="Down 0.9%">-0.9%</span>
+            <span class="pill pill--success">+2.8%</span>
+            <span class="pill pill--danger">-0.9%</span>
             <button class="kebab" type="button" aria-label="More options">⋯</button>
           </div>
         </header>
 
         <div class="legend" aria-label="Legend">
-          <span class="legend__item"><span class="swatch swatch--green" aria-hidden="true"></span> Green</span>
-          <span class="legend__item"><span class="swatch swatch--orange" aria-hidden="true"></span> Orange</span>
-          <span class="legend__item"><span class="swatch swatch--red" aria-hidden="true"></span> Red</span>
+          <span class="legend__item"><span class="swatch swatch--green" aria-hidden="true"></span> Series A</span>
+          <span class="legend__item"><span class="swatch swatch--orange" aria-hidden="true"></span> Series B</span>
+          <span class="legend__item"><span class="swatch swatch--red" aria-hidden="true"></span> Series C</span>
         </div>
 
-        <div class="chart-placeholder" role="img" aria-label="Line chart placeholder">
-          <svg viewBox="0 0 420 180" preserveAspectRatio="none" aria-hidden="true">
+        <div class="chart-placeholder chart-placeholder--line" role="img" aria-label="Line chart placeholder">
+          <svg viewBox="0 0 520 180" preserveAspectRatio="none" aria-hidden="true">
             <g opacity="0.55">
-              <line x1="0" y1="30" x2="420" y2="30" stroke="#e5e7eb" />
-              <line x1="0" y1="70" x2="420" y2="70" stroke="#e5e7eb" />
-              <line x1="0" y1="110" x2="420" y2="110" stroke="#e5e7eb" />
-              <line x1="0" y1="150" x2="420" y2="150" stroke="#e5e7eb" />
+              <line x1="0" y1="25" x2="520" y2="25" stroke="#e5e7eb" />
+              <line x1="0" y1="65" x2="520" y2="65" stroke="#e5e7eb" />
+              <line x1="0" y1="105" x2="520" y2="105" stroke="#e5e7eb" />
+              <line x1="0" y1="145" x2="520" y2="145" stroke="#e5e7eb" />
             </g>
             <polyline fill="none" stroke="#22c55e" stroke-width="2.5"
-              points="0,120 60,95 120,105 180,75 240,85 300,55 360,70 420,45" />
+              points="0,118 70,98 140,104 210,78 280,88 350,60 420,72 520,50" />
             <polyline fill="none" stroke="#f97316" stroke-width="2.5"
-              points="0,140 60,130 120,120 180,125 240,110 300,115 360,105 420,100" />
+              points="0,142 70,130 140,122 210,126 280,112 350,116 420,110 520,98" />
             <polyline fill="none" stroke="#ef4444" stroke-width="2.5"
-              points="0,80 60,92 120,88 180,105 240,98 300,115 360,130 420,120" />
+              points="0,78 70,92 140,86 210,104 280,98 350,116 420,132 520,118" />
           </svg>
         </div>
 
@@ -88,7 +100,7 @@
         </footer>
       </article>
 
-      <!-- 2) Mixed panel widget -->
+      <!-- 2) Regional distribution (map/panel + mini table) -->
       <article class="card card--tall" aria-label="Regional distribution">
         <header class="card__header">
           <h2 class="card__title">Regional distribution</h2>
@@ -126,7 +138,7 @@
         </div>
       </article>
 
-      <!-- 3) KPI summary widget -->
+      <!-- 3) Key metrics (KPI + donut-ish placeholder) -->
       <article class="card card--tall" aria-label="Key metrics">
         <header class="card__header">
           <h2 class="card__title">Key metrics</h2>
@@ -134,6 +146,22 @@
             <button class="kebab" type="button" aria-label="More options">⋯</button>
           </div>
         </header>
+
+        <div class="kpiHero" aria-label="KPI summary">
+          <div class="kpiHero__left">
+            <div class="kpiHero__label">Total</div>
+            <div class="kpiHero__value">20</div>
+          </div>
+          <div class="kpiHero__ring" role="img" aria-label="Donut chart placeholder">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#e5e7eb" stroke-width="8" />
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#22c55e" stroke-width="8"
+                stroke-dasharray="110 200" stroke-linecap="round" transform="rotate(-90 32 32)" />
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#f97316" stroke-width="8"
+                stroke-dasharray="40 200" stroke-linecap="round" transform="rotate(10 32 32)" opacity="0.9" />
+            </svg>
+          </div>
+        </div>
 
         <div class="kpis" role="list" aria-label="KPI list">
           <div *ngFor="let k of kpis" class="kpi" role="listitem">
@@ -149,8 +177,8 @@
         </div>
       </article>
 
-      <!-- 4) Bar chart widget (green) -->
-      <article class="card" aria-label="Category totals A">
+      <!-- 4) Bar chart (green) -->
+      <article class="card" aria-label="Category totals">
         <header class="card__header">
           <h2 class="card__title">Category totals</h2>
           <div class="card__actions">
@@ -173,8 +201,8 @@
         </footer>
       </article>
 
-      <!-- 5) Bar chart widget (purple) -->
-      <article class="card" aria-label="Category totals B">
+      <!-- 5) Bar chart (purple) -->
+      <article class="card" aria-label="Throughput">
         <header class="card__header">
           <h2 class="card__title">Throughput</h2>
           <div class="card__actions">
@@ -197,7 +225,7 @@
         </footer>
       </article>
 
-      <!-- 6) Action list widget -->
+      <!-- 6) Quick actions -->
       <article class="card" aria-label="Quick actions">
         <header class="card__header">
           <h2 class="card__title">Quick actions</h2>
@@ -206,16 +234,16 @@
           </div>
         </header>
 
-        <div class="actions">
-          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Refresh data')">Refresh data</a>
-          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Export report')">Export report</a>
-          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Sync devices')">Sync devices</a>
-          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Run diagnostics')">Run diagnostics</a>
-          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Open settings')">Open settings</a>
+        <div class="actions" aria-label="Action buttons">
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Create')">Create</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Update')">Update</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Delete')">Delete</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Export')">Export</a>
+          <a class="actionbtn" href="#" (click)="onActionClick($event, 'Settings')">Settings</a>
         </div>
       </article>
 
-      <!-- 7) Status table widget -->
+      <!-- 7) System status -->
       <article class="card card--tall" aria-label="System status">
         <header class="card__header">
           <h2 class="card__title">System status</h2>
@@ -242,7 +270,7 @@
         </div>
       </article>
 
-      <!-- 8) Recent events table widget -->
+      <!-- 8) Recent events -->
       <article class="card card--tall" aria-label="Recent events">
         <header class="card__header">
           <h2 class="card__title">Recent events</h2>
@@ -264,15 +292,19 @@
             <div role="cell">{{ e.device }}</div>
             <div role="cell">{{ e.event }}</div>
             <div role="cell" class="right">
-              <span class="pill" [class.pill--success]="e.result === 'Success'"
+              <span
+                class="pill"
+                [class.pill--success]="e.result === 'Success'"
                 [class.pill--warning]="e.result === 'Queued'"
-                [class.pill--danger]="e.result === 'Warning'">{{ e.result }}</span>
+                [class.pill--danger]="e.result === 'Warning'"
+                >{{ e.result }}</span
+              >
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 9) Sparkline list widget -->
+      <!-- 9) Trend snapshots (sparklines) -->
       <article class="card card--tall" aria-label="Trend snapshots">
         <header class="card__header">
           <h2 class="card__title">Trend snapshots</h2>

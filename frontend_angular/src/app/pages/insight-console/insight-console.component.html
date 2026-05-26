@@ -1,9 +1,10 @@
 <div class="ic" role="application" aria-label="Insight console">
 
-  <!-- LEFT SIDEBAR -->
+  <!-- LEFT SIDEBAR (icon-only / compact) -->
   <aside class="ic__sidebar" role="navigation" aria-label="Primary">
-    <div class="ic__sidebrand" aria-label="Insight Console brand">
-      <div class="ic__sidebrandTitle">Insight Console</div>
+    <div class="ic__sideBrand" aria-label="Insight Console brand">
+      <div class="ic__sideBrandLogo" aria-hidden="true">◐</div>
+      <div class="ic__sideBrandTitle">Insight<br />Console</div>
     </div>
 
     <ul class="ic__nav" role="list" aria-label="Sidebar navigation">
@@ -14,33 +15,10 @@
           [class.ic__navitem--active]="activeNav === 'Dashboard'"
           (click)="setActiveNav('Dashboard')"
           [attr.aria-current]="activeNav === 'Dashboard' ? 'page' : null"
+          aria-label="Dashboard"
         >
-          <span class="ic__navitemIco" aria-hidden="true">▦</span>
+          <span class="ic__navitemIco" aria-hidden="true">⌕</span>
           <span class="ic__navitemLabel">Dashboard</span>
-        </button>
-      </li>
-      <li role="listitem">
-        <button
-          type="button"
-          class="ic__navitem"
-          [class.ic__navitem--active]="activeNav === 'Alerts'"
-          (click)="setActiveNav('Alerts')"
-          [attr.aria-current]="activeNav === 'Alerts' ? 'page' : null"
-        >
-          <span class="ic__navitemIco" aria-hidden="true">🔔</span>
-          <span class="ic__navitemLabel">Alerts</span>
-        </button>
-      </li>
-      <li role="listitem">
-        <button
-          type="button"
-          class="ic__navitem"
-          [class.ic__navitem--active]="activeNav === 'Queue'"
-          (click)="setActiveNav('Queue')"
-          [attr.aria-current]="activeNav === 'Queue' ? 'page' : null"
-        >
-          <span class="ic__navitemIco" aria-hidden="true">☰</span>
-          <span class="ic__navitemLabel">Queue</span>
         </button>
       </li>
       <li role="listitem">
@@ -50,6 +28,7 @@
           [class.ic__navitem--active]="activeNav === 'Reports'"
           (click)="setActiveNav('Reports')"
           [attr.aria-current]="activeNav === 'Reports' ? 'page' : null"
+          aria-label="Reports"
         >
           <span class="ic__navitemIco" aria-hidden="true">▤</span>
           <span class="ic__navitemLabel">Reports</span>
@@ -59,15 +38,33 @@
         <button
           type="button"
           class="ic__navitem"
+          [class.ic__navitem--active]="activeNav === 'Alerts'"
+          (click)="setActiveNav('Alerts')"
+          [attr.aria-current]="activeNav === 'Alerts' ? 'page' : null"
+          aria-label="Alerts"
+        >
+          <span class="ic__navitemIco" aria-hidden="true">⚑</span>
+          <span class="ic__navitemLabel">Alerts</span>
+        </button>
+      </li>
+      <li role="listitem">
+        <button
+          type="button"
+          class="ic__navitem"
           [class.ic__navitem--active]="activeNav === 'Search'"
           (click)="setActiveNav('Search')"
           [attr.aria-current]="activeNav === 'Search' ? 'page' : null"
+          aria-label="Search"
         >
-          <span class="ic__navitemIco" aria-hidden="true">⌕</span>
+          <span class="ic__navitemIco" aria-hidden="true">⌖</span>
           <span class="ic__navitemLabel">Search</span>
         </button>
       </li>
     </ul>
+
+    <div class="ic__sideFooter" aria-hidden="true">
+      <div class="ic__sideFooterPill">375+ Sites</div>
+    </div>
   </aside>
 
   <!-- MAIN -->
@@ -78,21 +75,9 @@
         <div class="ic__pageTitle">Insight Console</div>
       </div>
 
-      <label class="ic__search" aria-label="Search">
-        <span class="ic__searchIco" aria-hidden="true">⌕</span>
-        <input
-          class="ic__searchInput"
-          type="search"
-          placeholder="search"
-          aria-label="Search input"
-        />
-      </label>
-
       <div class="ic__topbarRight" aria-label="Header actions">
-        <div class="ic__userInfo">
-          <span class="ic__userName">Welcome, {{ userName }}</span>
-          <span class="ic__avatarCircle" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
-        </div>
+        <span class="ic__welcome">Welcome, {{ userName }}!</span>
+        <span class="ic__avatarCircle" aria-hidden="true">{{ userName.slice(0, 1) }}</span>
       </div>
     </header>
 
@@ -100,82 +85,93 @@
     <main class="ic__content" role="main" aria-label="Insight console content">
       <div class="ic__grid">
 
-        <!-- LEFT COLUMN: AI Chat Panel -->
-        <div class="ic__col ic__col--left">
+        <!-- LEFT COLUMN: AI Chat / Query Card (large) -->
+        <section class="ic__col ic__col--left">
           <article class="ic__card ic__card--chat" aria-label="Ask me your queries">
             <header class="ic__cardHead">
               <h2 class="ic__cardTitle">Ask me your queries!</h2>
-              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
             </header>
 
             <!-- KPI Highlight -->
             <div class="ic__kpiHighlight" aria-label="Primary KPI">
-              <span class="ic__kpiMain">dk 8lim</span>
+              <span class="ic__kpiMain">-65 dbm</span>
             </div>
 
             <!-- Area Chart -->
             <div class="ic__areaChartWrap" role="img" aria-label="Analytics area chart">
               <svg
                 class="ic__areaChart"
-                viewBox="0 0 560 180"
+                viewBox="0 0 720 220"
                 preserveAspectRatio="none"
                 aria-hidden="true"
               >
-                <!-- Grid lines -->
-                <g opacity="0.5">
-                  <line x1="0" y1="36" x2="560" y2="36" stroke="#e9edf3" stroke-width="1" />
-                  <line x1="0" y1="72" x2="560" y2="72" stroke="#e9edf3" stroke-width="1" />
-                  <line x1="0" y1="108" x2="560" y2="108" stroke="#e9edf3" stroke-width="1" />
-                  <line x1="0" y1="144" x2="560" y2="144" stroke="#e9edf3" stroke-width="1" />
+                <!-- y-axis ticks -->
+                <g class="ic__chartTicks">
+                  <text x="6" y="30" font-size="10" fill="#9aa3b2">100</text>
+                  <text x="6" y="70" font-size="10" fill="#9aa3b2">80</text>
+                  <text x="6" y="110" font-size="10" fill="#9aa3b2">60</text>
+                  <text x="6" y="150" font-size="10" fill="#9aa3b2">40</text>
+                  <text x="6" y="190" font-size="10" fill="#9aa3b2">20</text>
                 </g>
 
-                <!-- Area fill -->
+                <!-- grid lines -->
+                <g opacity="0.45">
+                  <line x1="36" y1="30" x2="710" y2="30" stroke="#e9edf3" />
+                  <line x1="36" y1="70" x2="710" y2="70" stroke="#e9edf3" />
+                  <line x1="36" y1="110" x2="710" y2="110" stroke="#e9edf3" />
+                  <line x1="36" y1="150" x2="710" y2="150" stroke="#e9edf3" />
+                  <line x1="36" y1="190" x2="710" y2="190" stroke="#e9edf3" />
+                </g>
+
                 <defs>
-                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#1fb6c9" stop-opacity="0.28" />
-                    <stop offset="100%" stop-color="#1fb6c9" stop-opacity="0.02" />
+                  <linearGradient id="icAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#34c39a" stop-opacity="0.55" />
+                    <stop offset="100%" stop-color="#34c39a" stop-opacity="0.05" />
                   </linearGradient>
                 </defs>
 
+                <!-- Area fill -->
                 <polygon
-                  fill="url(#areaGrad)"
-                  points="0,180 0,130 56,110 112,120 168,95 224,100 280,80 336,72 392,60 448,50 504,42 560,38 560,180"
+                  fill="url(#icAreaGrad)"
+                  points="36,170 96,150 156,158 216,134 276,140 336,118 396,128 456,104 516,98 576,82 636,90 696,74 710,72 710,200 36,200"
                 />
 
                 <!-- Line -->
                 <polyline
                   fill="none"
-                  stroke="#1fb6c9"
-                  stroke-width="2.5"
-                  points="0,130 56,110 112,120 168,95 224,100 280,80 336,72 392,60 448,50 504,42 560,38"
+                  stroke="#22a877"
+                  stroke-width="2.2"
+                  points="36,170 96,150 156,158 216,134 276,140 336,118 396,128 456,104 516,98 576,82 636,90 696,74 710,72"
                 />
 
                 <!-- Data points -->
-                <circle cx="280" cy="80" r="4" fill="#1fb6c9" />
-                <circle cx="392" cy="60" r="4" fill="#1fb6c9" />
-                <circle cx="504" cy="42" r="4" fill="#1fb6c9" />
-              </svg>
+                <circle cx="216" cy="134" r="3.2" fill="#22a877" />
+                <circle cx="396" cy="128" r="3.2" fill="#22a877" />
+                <circle cx="576" cy="82" r="3.2" fill="#22a877" />
 
-              <!-- X-axis labels -->
-              <div class="ic__chartLabels" aria-hidden="true">
-                <span>Jan</span>
-                <span>Feb</span>
-                <span>Mar</span>
-                <span>Apr</span>
-                <span>May</span>
-                <span>Jun</span>
-                <span>Jul</span>
-                <span>Aug</span>
-                <span>Sep</span>
-                <span>Oct</span>
-                <span>Nov</span>
-              </div>
+                <!-- x-axis labels -->
+                <g font-size="10" fill="#9aa3b2" text-anchor="middle">
+                  <text x="56" y="212">Jan</text>
+                  <text x="116" y="212">Feb</text>
+                  <text x="176" y="212">Mar</text>
+                  <text x="236" y="212">Apr</text>
+                  <text x="296" y="212">May</text>
+                  <text x="356" y="212">Jun</text>
+                  <text x="416" y="212">Jul</text>
+                  <text x="476" y="212">Aug</text>
+                  <text x="536" y="212">Sep</text>
+                  <text x="596" y="212">Oct</text>
+                  <text x="656" y="212">Nov</text>
+                  <text x="700" y="212">Dec</text>
+                </g>
+              </svg>
             </div>
 
             <!-- Description text -->
             <p class="ic__chatDesc">
-              Explore insights with natural-language queries. Type your question below and get
-              AI-powered analytics answers instantly.
+              Explore insights with natural-language queries. Type your question below and get an
+              AI-powered answer instantly. The console will translate your query into analytics
+              and surface relevant trends.
             </p>
 
             <!-- Query input + submit -->
@@ -197,54 +193,20 @@
               </button>
             </div>
           </article>
-        </div>
+        </section>
 
-        <!-- MIDDLE COLUMN: Stats + Progress -->
-        <div class="ic__col ic__col--mid">
-          <!-- Stats Header Card -->
-          <article class="ic__card ic__card--stats" aria-label="Statistics overview">
+        <!-- RIGHT REGION: KPI card + small metric tiles grid -->
+        <section class="ic__col ic__col--right">
+
+          <!-- Top KPI / Progress card -->
+          <article class="ic__card ic__card--kpi" aria-label="Daily usage gauge">
             <header class="ic__cardHead">
-              <h2 class="ic__cardTitle">Statistics</h2>
-              <div class="ic__filterGroup" role="group" aria-label="Time filter">
-                <button
-                  class="ic__filterBtn"
-                  [class.ic__filterBtn--active]="activeFilter === 'week'"
-                  type="button"
-                  (click)="setFilter('week')"
-                >This week</button>
-                <button
-                  class="ic__filterBtn"
-                  [class.ic__filterBtn--active]="activeFilter === 'month'"
-                  type="button"
-                  (click)="setFilter('month')"
-                >This month</button>
-                <button
-                  class="ic__filterBtn"
-                  [class.ic__filterBtn--active]="activeFilter === 'total'"
-                  type="button"
-                  (click)="setFilter('total')"
-                >Total</button>
+              <div class="ic__kpiHead">
+                <h2 class="ic__cardTitleSm">Daily usage gauge<br/>across sites</h2>
               </div>
-            </header>
-
-            <div class="ic__kpiRow" aria-label="KPI summary">
-              <div class="ic__kpiItem">
-                <div class="ic__kpiLabel">Queries</div>
-                <div class="ic__kpiValue">{{ primaryKpi }}</div>
+              <div class="ic__kpiHeadVal">
+                <div class="ic__kpiBig">388K<span class="ic__kpiBigSub">/500k</span></div>
               </div>
-              <div class="ic__kpiDivider" aria-hidden="true">/</div>
-              <div class="ic__kpiItem">
-                <div class="ic__kpiLabel">Total</div>
-                <div class="ic__kpiValue ic__kpiValue--muted">{{ secondaryKpi }}</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Progress Items Card -->
-          <article class="ic__card ic__card--progress" aria-label="Category breakdown">
-            <header class="ic__cardHead">
-              <h2 class="ic__cardTitle">Breakdown</h2>
-              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
             </header>
 
             <div class="ic__progressList" role="list" aria-label="Category progress bars">
@@ -263,82 +225,160 @@
               }
             </div>
           </article>
-        </div>
 
-        <!-- RIGHT COLUMN: Search Result + Key Metrics + Bar Chart -->
-        <aside class="ic__col ic__col--right">
-          <!-- Search Query Result -->
-          <article class="ic__card ic__card--result" aria-label="Search query result">
-            <header class="ic__cardHead">
-              <h2 class="ic__cardTitle">Search Query Result</h2>
-              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
-            </header>
+          <!-- Small tiles grid (3 columns x 2 rows) -->
+          <div class="ic__tilesGrid" aria-label="Network metric tiles">
 
-            <div class="ic__resultBody" role="region" aria-label="Query result details">
-              <div class="ic__resultRow">
-                <span class="ic__resultLabel">Status</span>
-                <span class="ic__chip ic__chip--ok">Active</span>
-              </div>
-              <div class="ic__resultRow">
-                <span class="ic__resultLabel">Source</span>
-                <span class="ic__resultValue">Analytics DB</span>
-              </div>
-              <div class="ic__resultRow">
-                <span class="ic__resultLabel">Records</span>
-                <span class="ic__resultValue">4,821</span>
-              </div>
-              <div class="ic__resultRow">
-                <span class="ic__resultLabel">Latency</span>
-                <span class="ic__resultValue">128ms</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Key Metrics -->
-          <article class="ic__card ic__card--metrics" aria-label="Key metrics">
-            <header class="ic__cardHead">
-              <h2 class="ic__cardTitle">Key Metrics</h2>
-              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
-            </header>
-
-            <div class="ic__metricsList" role="list" aria-label="Key metrics list">
-              @for (metric of keyMetrics; track metric.label) {
-                <div class="ic__metricItem" role="listitem">
-                  <span class="ic__metricLabel">{{ metric.label }}</span>
-                  <span class="ic__metricValue">{{ metric.value }}</span>
-                  @if (metric.trend === 'up') {
-                    <span class="ic__trend ic__trend--up" aria-label="trending up">▲</span>
-                  } @else if (metric.trend === 'down') {
-                    <span class="ic__trend ic__trend--down" aria-label="trending down">▼</span>
-                  } @else {
-                    <span class="ic__trend" aria-label="stable">–</span>
+            <!-- Tile 1: Number of WiFi Users (green bars) -->
+            <article class="ic__tile" aria-label="Number of WiFi Users">
+              <div class="ic__tileTitle">Number of WiFi Users</div>
+              <div class="ic__tileChart">
+                <svg viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true">
+                  @for (h of barsUsers; track $index) {
+                    <rect
+                      [attr.x]="$index * 12 + 4"
+                      [attr.y]="60 - h"
+                      width="7"
+                      [attr.height]="h"
+                      rx="1.5"
+                      fill="#3ecf8e"
+                    />
                   }
-                </div>
-              }
-            </div>
-          </article>
+                </svg>
+              </div>
+              <div class="ic__tileFoot">
+                <span class="ic__tileVal">2.4k</span>
+                <span class="ic__tileTrend ic__tileTrend--up">▲ 12%</span>
+              </div>
+            </article>
 
-          <!-- Insight About: Bar Chart -->
-          <article class="ic__card ic__card--barchart" aria-label="Insight about bar chart">
-            <header class="ic__cardHead">
-              <h2 class="ic__cardTitle">Insight About</h2>
-              <button class="ic__kebab" type="button" aria-label="More options">⋯</button>
-            </header>
+            <!-- Tile 2: WiFi Band (donut purple) -->
+            <article class="ic__tile" aria-label="WiFi Band">
+              <div class="ic__tileTitle">WiFi Band</div>
+              <div class="ic__tileChart ic__tileChart--donut">
+                <svg viewBox="0 0 72 72" aria-hidden="true">
+                  <circle cx="36" cy="36" r="26" fill="none" stroke="#eef0f4" stroke-width="10" />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="26"
+                    fill="none"
+                    stroke="#8b5cf6"
+                    stroke-width="10"
+                    stroke-dasharray="120 163"
+                    stroke-dashoffset="40"
+                    transform="rotate(-90 36 36)"
+                    stroke-linecap="round"
+                  />
+                  <text x="36" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#111827">62%</text>
+                </svg>
+              </div>
+              <div class="ic__tileFoot">
+                <span class="ic__tileMuted">5GHz</span>
+              </div>
+            </article>
 
-            <div class="ic__barChart" role="img" aria-label="Monthly bar chart">
-              @for (bar of barChartData; track $index) {
-                <div class="ic__barWrap">
-                  <div
-                    class="ic__bar"
-                    [style.height.%]="bar"
-                    [attr.aria-label]="barChartLabels[$index] + ': ' + bar"
-                  ></div>
-                  <div class="ic__barLabel">{{ barChartLabels[$index] }}</div>
-                </div>
-              }
-            </div>
-          </article>
-        </aside>
+            <!-- Tile 3: Top WiFi Site (sparkline) -->
+            <article class="ic__tile" aria-label="Top WiFi Site">
+              <div class="ic__tileTitle">Top WiFi Site</div>
+              <div class="ic__tileChart">
+                <svg viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="icSpark1" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.45" />
+                      <stop offset="100%" stop-color="#f472b6" stop-opacity="0.03" />
+                    </linearGradient>
+                  </defs>
+                  <polygon
+                    fill="url(#icSpark1)"
+                    points="4,40 20,30 36,34 52,22 68,28 84,18 100,24 116,14 116,58 4,58"
+                  />
+                  <polyline
+                    fill="none"
+                    stroke="#ec4899"
+                    stroke-width="2"
+                    points="4,40 20,30 36,34 52,22 68,28 84,18 100,24 116,14"
+                  />
+                </svg>
+              </div>
+              <div class="ic__tileFoot">
+                <span class="ic__tileVal">Site-A12</span>
+              </div>
+            </article>
+
+            <!-- Tile 4: Avg Network Speed (gauge) -->
+            <article class="ic__tile" aria-label="Avg Network Speed">
+              <div class="ic__tileTitle">Avg Network Speed</div>
+              <div class="ic__tileChart ic__tileChart--gauge">
+                <svg viewBox="0 0 100 60" aria-hidden="true">
+                  <path d="M10 55 A 40 40 0 0 1 90 55" fill="none" stroke="#eef0f4" stroke-width="9" stroke-linecap="round" />
+                  <path d="M10 55 A 40 40 0 0 1 70 21" fill="none" stroke="#22c55e" stroke-width="9" stroke-linecap="round" />
+                  <text x="50" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#111827">84</text>
+                  <text x="50" y="60" text-anchor="middle" font-size="8" fill="#9aa3b2">Mbps</text>
+                </svg>
+              </div>
+              <div class="ic__tileFoot">
+                <span class="ic__tileTrend ic__tileTrend--up">▲ 4%</span>
+              </div>
+            </article>
+
+            <!-- Tile 5: Network Health (donut teal) -->
+            <article class="ic__tile" aria-label="Network Health">
+              <div class="ic__tileTitle">Network Health</div>
+              <div class="ic__tileChart ic__tileChart--donut">
+                <svg viewBox="0 0 72 72" aria-hidden="true">
+                  <circle cx="36" cy="36" r="26" fill="none" stroke="#eef0f4" stroke-width="10" />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="26"
+                    fill="none"
+                    stroke="#1fb6c9"
+                    stroke-width="10"
+                    stroke-dasharray="140 163"
+                    stroke-dashoffset="40"
+                    transform="rotate(-90 36 36)"
+                    stroke-linecap="round"
+                  />
+                  <text x="36" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#111827">86%</text>
+                </svg>
+              </div>
+              <div class="ic__tileFoot">
+                <span class="ic__tileMuted">Healthy</span>
+              </div>
+            </article>
+
+            <!-- Tile 6: Avg Latency (sparkline) -->
+            <article class="ic__tile" aria-label="Avg Latency">
+              <div class="ic__tileTitle">Avg Latency</div>
+              <div class="ic__tileChart">
+                <svg viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="icSpark2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.45" />
+                      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.03" />
+                    </linearGradient>
+                  </defs>
+                  <polygon
+                    fill="url(#icSpark2)"
+                    points="4,20 20,28 36,22 52,32 68,26 84,36 100,28 116,40 116,58 4,58"
+                  />
+                  <polyline
+                    fill="none"
+                    stroke="#3b82f6"
+                    stroke-width="2"
+                    points="4,20 20,28 36,22 52,32 68,26 84,36 100,28 116,40"
+                  />
+                </svg>
+              </div>
+              <div class="ic__tileFoot">
+                <span class="ic__tileVal">128 ms</span>
+                <span class="ic__tileTrend ic__tileTrend--down">▼ 6%</span>
+              </div>
+            </article>
+
+          </div>
+        </section>
 
       </div>
     </main>

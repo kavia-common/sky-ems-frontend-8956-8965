@@ -2,13 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-type NavKey = 'Dashboard' | 'Alerts' | 'Queue' | 'Reports' | 'Search';
-
-type KeyMetric = {
-  label: string;
-  value: string;
-  trend?: 'up' | 'down' | 'flat';
-};
+type NavKey = 'Dashboard' | 'Reports' | 'Alerts' | 'Search';
 
 type ProgressItem = {
   label: string;
@@ -21,13 +15,18 @@ type ProgressItem = {
  *
  * Source of truth: `/attachments/image.png`
  *
- * Layout:
- * - Left sidebar with text/icon navigation
- * - Top bar with title and user info
- * - 3-column dashboard grid:
- *   - Left: "Ask me your queries!" AI chat panel with area chart
- *   - Middle: Metrics stats with filters and progress bars
- *   - Right: Search Query Result, Key Metrics table, bar chart
+ * Layout (pixel-accurate to the provided Figma screenshot):
+ * - Compact left sidebar with lavender background and icon+label nav items,
+ *   topped by a circular gradient logo and a pink "375+ Sites" footer pill.
+ * - Lavender top header band with page title (left) and "Welcome, {name}!" + avatar (right).
+ * - Main content split into two columns:
+ *   - Left (large card): "Ask me your queries!" with big KPI "-65 dbm",
+ *     a green-filled area/line chart, descriptive text, and a pill-shaped
+ *     query input with a purple "Submit" button.
+ *   - Right (stacked):
+ *       1) "Daily usage gauge across sites" KPI card (388K / 500k) with four
+ *          colored horizontal progress bars.
+ *       2) 3x2 grid of small metric tiles (bar/donut/sparkline/gauge variants).
  */
 @Component({
   selector: 'app-insight-console',
@@ -37,47 +36,25 @@ type ProgressItem = {
   styleUrl: './insight-console.component.css',
 })
 export class InsightConsoleComponent {
-  /** Username used for the user menu. */
-  userName = 'Jane Doe';
+  /** Display name used in the welcome message + avatar initial. */
+  userName = 'John Doe';
 
-  /** Active nav key. */
+  /** Active sidebar nav item. */
   activeNav: NavKey = 'Dashboard';
 
   /** Query text entered in the AI chat panel. */
   queryText = '';
 
-  /** Primary KPI displayed in the stats panel. */
-  primaryKpi = '68.4k';
-
-  /** Secondary KPI (total) displayed in the stats panel. */
-  secondaryKpi = '1030k';
-
-  /** Active time filter. */
-  activeFilter: 'week' | 'month' | 'total' = 'week';
-
-  /** Progress items in the middle column. */
+  /** Horizontal progress bars shown inside the KPI card (right column top). */
   progressItems: ProgressItem[] = [
-    { label: 'Category A', percent: 82, color: '#1fb6c9' },
-    { label: 'Category B', percent: 65, color: '#22c55e' },
-    { label: 'Category C', percent: 48, color: '#8b5cf6' },
-    { label: 'Category D', percent: 71, color: '#f59e0b' },
-    { label: 'Category E', percent: 55, color: '#ec4899' },
-    { label: 'Category F', percent: 39, color: '#ef4444' },
+    { label: 'Site cluster A', percent: 88, color: '#34c39a' },
+    { label: 'Site cluster B', percent: 72, color: '#8b5cf6' },
+    { label: 'Site cluster C', percent: 60, color: '#3b82f6' },
+    { label: 'Site cluster D', percent: 42, color: '#f59e0b' },
   ];
 
-  /** Key metrics in the right column. */
-  keyMetrics: KeyMetric[] = [
-    { label: 'Avg Session', value: '4m 32s', trend: 'up' },
-    { label: 'Bounce Rate', value: '38.2%', trend: 'down' },
-    { label: 'Conv. Rate', value: '5.7%', trend: 'up' },
-    { label: 'Impressions', value: '142k', trend: 'up' },
-  ];
-
-  /** Bar chart data (relative heights 0-100). */
-  barChartData: number[] = [40, 65, 52, 78, 60, 45, 70, 58, 84, 66, 50, 75];
-
-  /** Bar chart labels (months). */
-  barChartLabels: string[] = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+  /** Heights (0-60 viewBox units) for the small bar chart tile. */
+  barsUsers: number[] = [22, 34, 18, 42, 30, 50, 36, 28, 44, 32];
 
   // PUBLIC_INTERFACE
   setActiveNav(key: NavKey): void {
@@ -86,14 +63,9 @@ export class InsightConsoleComponent {
   }
 
   // PUBLIC_INTERFACE
-  setFilter(filter: 'week' | 'month' | 'total'): void {
-    /** Sets the active time filter for the stats panel. */
-    this.activeFilter = filter;
-  }
-
-  // PUBLIC_INTERFACE
   submitQuery(): void {
-    /** Handles query submission in the AI chat panel (placeholder). */
-    console.log('Query submitted:', this.queryText);
+    /** Handles query submission in the AI chat panel (placeholder action). */
+    // eslint-disable-next-line no-console
+    console.log('Insight Console query submitted:', this.queryText);
   }
 }

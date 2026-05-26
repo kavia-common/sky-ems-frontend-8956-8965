@@ -1,23 +1,57 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
-type SidebarItem = {
-  label: string;
-  icon: string;
-  active?: boolean;
+type NavKey = 'Dashboard' | 'Reports' | 'Search';
+
+type ActivityItem = {
+  time: string;
+  message: string;
 };
 
-type TableRow = {
-  name: string;
-  status: 'ok' | 'warn' | 'down';
-  value: string;
+type DeviceInfo = {
+  deviceId: string;
+  firmware: string;
+  hardwareVersion: string;
+  serialNumber: string;
+  mac: string;
+};
+
+type WifiDetails = {
+  networkName: string;
+  channel: string;
+  signal: string;
+  security: string;
+};
+
+type EthernetStatus = {
+  ip: string;
+  subnetMask: string;
+  connected: boolean;
+};
+
+type NotificationCounts = {
+  alerts: number;
+  warnings: number;
+  messages: number;
+};
+
+type SpeedTest = {
+  downloadMbps: number;
+  uploadMbps: number;
+};
+
+type NetworkStats = {
+  signalDbm: number;
+  latencyMs: number;
 };
 
 /**
- * Home centric console page — dashboard-like console UI.
+ * Home centric console page — modern network monitoring dashboard UI.
  *
- * This is the destination route when the user clicks the “Home centric console”
- * card on the landing page.
+ * Layout per user_input_ref:
+ * - Left vertical sidebar with icons (Dashboard, Reports, Search)
+ * - Top header bar: "Welcome John Doe"
+ * - 3-column main dashboard with specified panels/cards
  */
 @Component({
   selector: 'app-home-centric-console',
@@ -27,58 +61,70 @@ type TableRow = {
   styleUrl: './home-centric-console.component.css',
 })
 export class HomeCentricConsoleComponent {
-  /**
-   * Username shown in the header avatar/menu.
-   * In a real application, this would come from an auth/user profile service.
-   */
-  userName = 'Jane Doe';
+  /** Username shown in the header welcome and user menu. */
+  userName = 'John Doe';
 
-  sidebarItems: SidebarItem[] = [
-    { label: 'Home', icon: '🏠', active: true },
-    { label: 'Dashboard', icon: '📊' },
-    { label: 'Reports', icon: '🧾' },
-    { label: 'Alerts', icon: '🔔' },
-    { label: 'Settings', icon: '⚙️' },
-  ];
+  activeNav: NavKey = 'Dashboard';
 
-  kpis = [
-    { label: 'Active', value: '20', delta: '+4.2%', tone: 'success' as const },
-    { label: 'Warning', value: '06', delta: '-1.1%', tone: 'warning' as const },
-    { label: 'Down', value: '02', delta: '+0.7%', tone: 'danger' as const },
-  ];
+  deviceInfo: DeviceInfo = {
+    deviceId: 'HCC-DEV-01',
+    firmware: 'v1.2.8',
+    hardwareVersion: 'HW-2.1',
+    serialNumber: 'SN-9F3A-2C11',
+    mac: 'AA:BB:CC:DD:EE:FF',
+  };
 
-  statusTable: TableRow[] = [
-    { name: 'Gateway A', status: 'ok', value: 'Healthy' },
-    { name: 'Gateway B', status: 'warn', value: 'Degraded' },
-    { name: 'Gateway C', status: 'down', value: 'Offline' },
-    { name: 'Gateway D', status: 'ok', value: 'Healthy' },
-  ];
+  wifiDetails: WifiDetails = {
+    networkName: 'HCC-Network',
+    channel: '11',
+    signal: 'Strong',
+    security: 'WPA2',
+  };
 
-  recentTable = [
-    { time: '08:10', device: 'Living Room', event: 'Cookie updated', result: 'Success' },
-    { time: '08:22', device: 'Bedroom', event: 'Sync', result: 'Success' },
-    { time: '08:35', device: 'Kitchen', event: 'Policy applied', result: 'Queued' },
-    { time: '08:42', device: 'Hallway', event: 'Report generated', result: 'Success' },
-    { time: '08:55', device: 'Garage', event: 'Heartbeat', result: 'Warning' },
+  ethernetStatus: EthernetStatus = {
+    ip: '192.168.1.101',
+    subnetMask: '255.255.255.0',
+    connected: true,
+  };
+
+  notifications: NotificationCounts = {
+    alerts: 3,
+    warnings: 7,
+    messages: 12,
+  };
+
+  speedTest: SpeedTest = {
+    downloadMbps: 320,
+    uploadMbps: 42,
+  };
+
+  networkStats: NetworkStats = {
+    signalDbm: -75,
+    latencyMs: 75,
+  };
+
+  recentActivity: ActivityItem[] = [
+    { time: '09:12', message: 'Device connected: Laptop' },
+    { time: '09:18', message: 'WiFi channel optimized' },
+    { time: '09:25', message: 'Firmware check completed' },
+    { time: '09:31', message: 'Speed test scheduled' },
+    { time: '09:44', message: 'New warning: signal fluctuation' },
   ];
 
   // PUBLIC_INTERFACE
-  onNavClick(item: SidebarItem): void {
-    /** Handles sidebar item clicks (placeholder for future navigation). */
-    this.sidebarItems = this.sidebarItems.map((i) => ({ ...i, active: i.label === item.label }));
+  setActiveNav(key: NavKey): void {
+    /** Sets the active sidebar navigation item (visual only; no routing in this view). */
+    this.activeNav = key;
   }
 
   // PUBLIC_INTERFACE
-  onTopLinkClick(event: globalThis.MouseEvent, label: string): void {
-    /** Handles top header navigation clicks (placeholder for future navigation). */
-    event.preventDefault();
-    console.log(`Top nav: ${label}`);
-  }
-
-  // PUBLIC_INTERFACE
-  onActionClick(event: globalThis.MouseEvent, label: string): void {
-    /** Handles action button clicks in the action list widget (placeholder). */
-    event.preventDefault();
-    console.log(`Action: ${label}`);
+  runSpeedTest(): void {
+    /**
+     * Triggers a speed test action (placeholder).
+     * In a real implementation, this would call an API and update download/upload values.
+     */
+    // Keep as a no-op placeholder while preserving UX affordance.
+    // eslint-disable-next-line no-console
+    console.log('Run Test clicked');
   }
 }

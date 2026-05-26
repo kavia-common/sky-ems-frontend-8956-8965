@@ -60,10 +60,10 @@
 
   <main class="content" role="main" aria-label="Dashboard">
     <section class="grid" aria-label="Widgets">
-      <!-- 1) Performance over time (multi-line time series) -->
-      <article class="card card--wide card--tall" aria-label="Performance over time">
+      <!-- Row 1: WFM chart + right stack -->
+      <article class="card card--wfm" aria-label="WFM">
         <header class="card__header">
-          <h2 class="card__title">Performance over time</h2>
+          <h2 class="card__title">WFM</h2>
           <div class="card__actions" aria-label="Card actions">
             <span class="pill pill--success">+2.8%</span>
             <span class="pill pill--danger">-0.9%</span>
@@ -72,12 +72,12 @@
         </header>
 
         <div class="legend" aria-label="Legend">
-          <span class="legend__item"><span class="swatch swatch--green" aria-hidden="true"></span> Series A</span>
-          <span class="legend__item"><span class="swatch swatch--orange" aria-hidden="true"></span> Series B</span>
-          <span class="legend__item"><span class="swatch swatch--red" aria-hidden="true"></span> Series C</span>
+          <span class="legend__item"><span class="swatch swatch--green" aria-hidden="true"></span> HCC</span>
+          <span class="legend__item"><span class="swatch swatch--orange" aria-hidden="true"></span> ODS</span>
+          <span class="legend__item"><span class="swatch swatch--red" aria-hidden="true"></span> RAS</span>
         </div>
 
-        <div class="chart-placeholder chart-placeholder--line" role="img" aria-label="Line chart placeholder">
+        <div class="chart-placeholder chart-placeholder--line" role="img" aria-label="WFM line chart placeholder">
           <svg viewBox="0 0 520 180" preserveAspectRatio="none" aria-hidden="true">
             <g opacity="0.55">
               <line x1="0" y1="25" x2="520" y2="25" stroke="#e5e7eb" />
@@ -85,13 +85,36 @@
               <line x1="0" y1="105" x2="520" y2="105" stroke="#e5e7eb" />
               <line x1="0" y1="145" x2="520" y2="145" stroke="#e5e7eb" />
             </g>
-            <polyline fill="none" stroke="#22c55e" stroke-width="2.5"
-              points="0,118 70,98 140,104 210,78 280,88 350,60 420,72 520,50" />
-            <polyline fill="none" stroke="#f97316" stroke-width="2.5"
-              points="0,142 70,130 140,122 210,126 280,112 350,116 420,110 520,98" />
-            <polyline fill="none" stroke="#ef4444" stroke-width="2.5"
-              points="0,78 70,92 140,86 210,104 280,98 350,116 420,132 520,118" />
+            <polyline
+              fill="none"
+              stroke="#22c55e"
+              stroke-width="2.5"
+              points="0,118 70,98 140,104 210,78 280,88 350,60 420,72 520,50"
+            />
+            <polyline
+              fill="none"
+              stroke="#f59e0b"
+              stroke-width="2.5"
+              points="0,142 70,130 140,122 210,126 280,112 350,116 420,110 520,98"
+            />
+            <polyline
+              fill="none"
+              stroke="#ef4444"
+              stroke-width="2.5"
+              points="0,78 70,92 140,86 210,104 280,98 350,116 420,132 520,118"
+            />
           </svg>
+        </div>
+
+        <div class="mini-bars" role="img" aria-label="WFM mini bar strip">
+          <span class="mini-bar" style="height: 55%"></span>
+          <span class="mini-bar" style="height: 72%"></span>
+          <span class="mini-bar" style="height: 40%"></span>
+          <span class="mini-bar" style="height: 85%"></span>
+          <span class="mini-bar" style="height: 62%"></span>
+          <span class="mini-bar" style="height: 35%"></span>
+          <span class="mini-bar" style="height: 70%"></span>
+          <span class="mini-bar" style="height: 48%"></span>
         </div>
 
         <footer class="card__footer">
@@ -100,17 +123,16 @@
         </footer>
       </article>
 
-      <!-- 2) Regional distribution (map/panel + mini table) -->
-      <article class="card card--tall" aria-label="Regional distribution">
+      <article class="card card--energy" aria-label="Energy usage">
         <header class="card__header">
-          <h2 class="card__title">Regional distribution</h2>
+          <h2 class="card__title">Energy usage</h2>
           <div class="card__actions">
             <button class="kebab" type="button" aria-label="More options">⋯</button>
           </div>
         </header>
 
-        <div class="split">
-          <div class="panel" role="img" aria-label="Map or heat panel placeholder">
+        <div class="split split--energy">
+          <div class="panel panel--map" role="img" aria-label="Map placeholder">
             <div class="panel__chip">Live</div>
             <div class="panel__dots" aria-hidden="true">
               <span class="dot dot--a"></span>
@@ -120,10 +142,10 @@
             </div>
           </div>
 
-          <div class="mini-table" role="table" aria-label="Summary table">
+          <div class="mini-table" role="table" aria-label="Energy usage table">
             <div class="mini-table__row mini-table__row--head" role="row">
               <div role="columnheader">Zone</div>
-              <div role="columnheader" class="right">Count</div>
+              <div role="columnheader" class="right">kWh</div>
             </div>
             <div class="mini-table__row" role="row">
               <div role="cell">North</div><div role="cell" class="right">12</div>
@@ -134,51 +156,76 @@
             <div class="mini-table__row" role="row">
               <div role="cell">West</div><div role="cell" class="right">5</div>
             </div>
+            <div class="mini-table__row" role="row">
+              <div role="cell">South</div><div role="cell" class="right">3</div>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- 3) Key metrics (KPI + donut-ish placeholder) -->
-      <article class="card card--tall" aria-label="Key metrics">
+      <article class="card card--records" aria-label="Records">
         <header class="card__header">
-          <h2 class="card__title">Key metrics</h2>
+          <h2 class="card__title">Records</h2>
           <div class="card__actions">
             <button class="kebab" type="button" aria-label="More options">⋯</button>
           </div>
         </header>
 
-        <div class="kpiHero" aria-label="KPI summary">
-          <div class="kpiHero__left">
-            <div class="kpiHero__label">Total</div>
-            <div class="kpiHero__value">20</div>
-          </div>
-          <div class="kpiHero__ring" role="img" aria-label="Donut chart placeholder">
-            <svg viewBox="0 0 64 64" aria-hidden="true">
-              <circle cx="32" cy="32" r="26" fill="none" stroke="#e5e7eb" stroke-width="8" />
-              <circle cx="32" cy="32" r="26" fill="none" stroke="#22c55e" stroke-width="8"
-                stroke-dasharray="110 200" stroke-linecap="round" transform="rotate(-90 32 32)" />
-              <circle cx="32" cy="32" r="26" fill="none" stroke="#f97316" stroke-width="8"
-                stroke-dasharray="40 200" stroke-linecap="round" transform="rotate(10 32 32)" opacity="0.9" />
-            </svg>
-          </div>
-        </div>
-
-        <div class="kpis" role="list" aria-label="KPI list">
-          <div *ngFor="let k of kpis" class="kpi" role="listitem">
-            <div class="kpi__meta">
-              <div class="kpi__label">{{ k.label }}</div>
-              <div class="kpi__delta" [class]="'kpi__delta--' + k.tone">{{ k.delta }}</div>
+        <div class="records">
+          <div class="records__top">
+            <div class="records__metric">
+              <div class="records__label">Total</div>
+              <div class="records__value">20</div>
             </div>
-            <div class="kpi__value">{{ k.value }}</div>
-            <div class="kpi__bar" aria-hidden="true">
-              <div class="kpi__barfill" [class]="'kpi__barfill--' + k.tone"></div>
+
+            <div class="segmented" role="tablist" aria-label="Records filter">
+              <button class="segmented__btn segmented__btn--active" type="button" role="tab" aria-selected="true">
+                Day
+              </button>
+              <button class="segmented__btn" type="button" role="tab" aria-selected="false">
+                Week
+              </button>
+              <button class="segmented__btn" type="button" role="tab" aria-selected="false">
+                Month
+              </button>
+            </div>
+          </div>
+
+          <div class="kpis kpis--compact" role="list" aria-label="Records KPIs">
+            <div *ngFor="let k of kpis" class="kpi" role="listitem">
+              <div class="kpi__meta">
+                <div class="kpi__label">{{ k.label }}</div>
+                <div class="kpi__delta" [class]="'kpi__delta--' + k.tone">{{ k.delta }}</div>
+              </div>
+              <div class="kpi__value">{{ k.value }}</div>
+              <div class="kpi__bar" aria-hidden="true">
+                <div class="kpi__barfill" [class]="'kpi__barfill--' + k.tone"></div>
+              </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 4) Bar chart (green) -->
-      <article class="card" aria-label="Category totals">
+      <!-- Row 2: medium cards -->
+      <article class="card card--funnels" aria-label="Funnels">
+        <header class="card__header">
+          <h2 class="card__title">Funnels</h2>
+          <div class="card__actions">
+            <button class="kebab" type="button" aria-label="More options">⋯</button>
+          </div>
+        </header>
+
+        <div class="funnel" role="img" aria-label="Funnel placeholder">
+          <div class="funnel__shape"></div>
+          <div class="funnel__stats">
+            <div class="funnel__row"><span class="muted">Step 1</span><span class="funnel__num">120</span></div>
+            <div class="funnel__row"><span class="muted">Step 2</span><span class="funnel__num">86</span></div>
+            <div class="funnel__row"><span class="muted">Step 3</span><span class="funnel__num">42</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card card--category" aria-label="Category totals">
         <header class="card__header">
           <h2 class="card__title">Category totals</h2>
           <div class="card__actions">
@@ -201,8 +248,7 @@
         </footer>
       </article>
 
-      <!-- 5) Bar chart (purple) -->
-      <article class="card" aria-label="Throughput">
+      <article class="card card--throughput" aria-label="Throughput">
         <header class="card__header">
           <h2 class="card__title">Throughput</h2>
           <div class="card__actions">
@@ -225,8 +271,7 @@
         </footer>
       </article>
 
-      <!-- 6) Quick actions -->
-      <article class="card" aria-label="Quick actions">
+      <article class="card card--quick" aria-label="Quick actions">
         <header class="card__header">
           <h2 class="card__title">Quick actions</h2>
           <div class="card__actions">
@@ -243,8 +288,8 @@
         </div>
       </article>
 
-      <!-- 7) System status -->
-      <article class="card card--tall" aria-label="System status">
+      <!-- Row 3: tables + right-column trends -->
+      <article class="card card--system" aria-label="System status">
         <header class="card__header">
           <h2 class="card__title">System status</h2>
           <div class="card__actions">
@@ -270,8 +315,7 @@
         </div>
       </article>
 
-      <!-- 8) Recent events -->
-      <article class="card card--tall" aria-label="Recent events">
+      <article class="card card--recent" aria-label="Recent events">
         <header class="card__header">
           <h2 class="card__title">Recent events</h2>
           <div class="card__actions">
@@ -304,38 +348,33 @@
         </div>
       </article>
 
-      <!-- 9) Trend snapshots (sparklines) -->
-      <article class="card card--tall" aria-label="Trend snapshots">
+      <article class="card card--trend" aria-label="Trend">
         <header class="card__header">
-          <h2 class="card__title">Trend snapshots</h2>
+          <h2 class="card__title">Trend</h2>
           <div class="card__actions">
             <button class="kebab" type="button" aria-label="More options">⋯</button>
           </div>
         </header>
 
-        <div class="sparks" role="list" aria-label="Sparkline list">
-          <div class="spark" role="listitem" aria-label="Snapshot A">
-            <div class="spark__meta">
-              <div class="spark__label">Latency</div>
-              <div class="spark__value">42ms</div>
-            </div>
-            <div class="spark__line spark__line--yellow" aria-hidden="true"></div>
-          </div>
+        <div class="trendcard" aria-label="Trend snapshots">
+          <div class="trendline trendline--yellow" role="img" aria-label="Trend line yellow"></div>
 
-          <div class="spark" role="listitem" aria-label="Snapshot B">
-            <div class="spark__meta">
-              <div class="spark__label">Requests</div>
-              <div class="spark__value">1.2k</div>
+          <div class="sparks sparks--stack" role="list" aria-label="Sparkline list">
+            <div class="spark" role="listitem" aria-label="Snapshot green">
+              <div class="spark__meta">
+                <div class="spark__label">Requests</div>
+                <div class="spark__value">1.2k</div>
+              </div>
+              <div class="spark__line spark__line--green" aria-hidden="true"></div>
             </div>
-            <div class="spark__line spark__line--green" aria-hidden="true"></div>
-          </div>
 
-          <div class="spark" role="listitem" aria-label="Snapshot C">
-            <div class="spark__meta">
-              <div class="spark__label">Errors</div>
-              <div class="spark__value">0.7%</div>
+            <div class="spark" role="listitem" aria-label="Snapshot pink">
+              <div class="spark__meta">
+                <div class="spark__label">Errors</div>
+                <div class="spark__value">0.7%</div>
+              </div>
+              <div class="spark__line spark__line--pink" aria-hidden="true"></div>
             </div>
-            <div class="spark__line spark__line--red" aria-hidden="true"></div>
           </div>
         </div>
       </article>

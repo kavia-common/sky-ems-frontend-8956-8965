@@ -47,10 +47,10 @@ export class InsightConsoleComponent {
 
   /** Horizontal progress bars shown inside the KPI card (right column top). */
   progressItems: ProgressItem[] = [
-    { label: 'Site cluster A', percent: 88, color: '#34c39a' },
-    { label: 'Site cluster B', percent: 72, color: '#8b5cf6' },
-    { label: 'Site cluster C', percent: 60, color: '#3b82f6' },
-    { label: 'Site cluster D', percent: 42, color: '#f59e0b' },
+    { label: 'Region North', percent: 96, color: '#34c39a' },
+    { label: 'Region South', percent: 92, color: '#8b5cf6' },
+    { label: 'Region East', percent: 88, color: '#22c1c3' },
+    { label: 'Region West', percent: 84, color: '#f59e0b' },
   ];
 
   /** Heights (0-60 viewBox units) for the small bar chart tile. */
